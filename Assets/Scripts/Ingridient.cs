@@ -70,14 +70,14 @@ public class Ingridient : MonoBehaviour
         //Interaction with utensils
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, dropCheckRange);
         IUtensil utensil = null;
-        foreach (Collider2D other in colliders) //Look through the colliders for a processor
+        foreach (Collider2D other in colliders) //Look through the colliders for a utensil
         {
             utensil = other.GetComponent<IUtensil>();
             if (utensil != null) break;
         }
         if(utensil != null) 
         {
-            utensil.IngridientInteraction(this); //Process
+            utensil.IngridientInteraction(this); //Interact
         }
     }
 }
