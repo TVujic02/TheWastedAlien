@@ -19,7 +19,7 @@ public class Ingridient : MonoBehaviour
     private float releaseForce = 500f;
 
     [SerializeField]
-    [Tooltip("The radius used to check for interactions when the obejct is dropeed")]
+    [Tooltip("The radius used to check for interactions when the obejct is dropped")]
     private float dropCheckRange = 1f;
 
     [HideInInspector]
@@ -32,6 +32,8 @@ public class Ingridient : MonoBehaviour
     private Vector2 mousePosDifference = Vector2.zero;
     private Rigidbody2D rb;
     private Vector2 previousPos, storedPos;
+
+    public string IngridientID { get => ingridientID; set => ingridientID = value; }
 
     // Start is called before the first frame update
     void Start()
