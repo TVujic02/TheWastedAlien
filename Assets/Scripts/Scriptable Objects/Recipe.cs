@@ -21,7 +21,7 @@ public class Recipe : ScriptableObject
         if(ingridients.Count != compareList.Count) return false;
         for(int i = 0; i < ingridients.Count; i++)
         {
-            if (ingridients[i].IngridientID != compareList[i].IngridientID) //If the ingridients are not of the same type
+            if (!compareList.Exists(ing => ing.IngridientID == ingridients[i].IngridientID)) //If the ingridients are not of the same type
             {
                 return false; //Then the lists are not the same
             }

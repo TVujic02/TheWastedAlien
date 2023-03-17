@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02574db843a35064cabc857caca3a010, type: 3}
   m_Name: CosmicFizz
   m_EditorClassIdentifier: 
-  ingridients: []
-  resultDrink: {fileID: 0}
+  ingridients:
+  - {fileID: 3318476293936530392, guid: d3de42f64ddce71449e831fe9c015f36, type: 3}
+  - {fileID: 4665853875902414878, guid: c4cefdd7519bec34aa35a74bd6f09b89, type: 3}
+  resultDrink: {fileID: 8501565638140027105, guid: 466a5a4a7bf0be74bbe1053fa42d04f1, type: 3}

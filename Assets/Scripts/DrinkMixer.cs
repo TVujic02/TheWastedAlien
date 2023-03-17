@@ -26,6 +26,11 @@ public class DrinkMixer : MonoBehaviour, IUtensil
     [SerializeField]
     [Tooltip("The different recipes that ur able to make with this mixer.")]
     private List<Recipe> recipes = new List<Recipe>();
+
+    [SerializeField]
+    [Tooltip("Reference to the drink stand.")]
+    private DrinkStand drinkStand;
+
     //Private variable
     private List<Ingridient> storedIngridients = new List<Ingridient>();
     private Vector2 mousePosDifference = Vector2.zero;
@@ -109,7 +114,13 @@ public class DrinkMixer : MonoBehaviour, IUtensil
         {
             if(recipe.CompareIngridients(storedIngridients, out result)) //Returns true if we matched the recipe
             {
-                Instantiate(result, transform.position, transform.rotation); //Instatiate the drink created by the recipe
+                GameObject instance = Instantiate(result, transform.position, transform.rotation); //Instatiate the drink created by the recipe
+                drinkStand.AddDrink(instance); //Add it to the stand
+                foreach(Ingridient ingridient in storedIngridients) //Remove stored ingridients
+                {
+                    Destroy(ingridient.gameObject);
+                }
+                storedIngridients.Clear();
                 return; //Exit out of the function
             }
         }
