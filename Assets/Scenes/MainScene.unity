@@ -3014,7 +3014,25 @@ MonoBehaviour:
   customerOrderingPoint: {fileID: 2110828270}
   customerExitPoint: {fileID: 1634620059}
   spawnTimeRange: {x: 0, y: 1}
-  customerSpawnRateDatas: []
+  customerSpawnRateDatas:
+  - customerPrefab: {fileID: 0}
+    BaseRate: 0
+    BaseRange: {x: 0, y: 0}
+    StopCount: 0
+    ModifiedRate: 0
+    ModifiedRange: {x: 0, y: 0}
+  - customerPrefab: {fileID: 0}
+    BaseRate: 0
+    BaseRange: {x: 0, y: 0}
+    StopCount: 0
+    ModifiedRate: 0
+    ModifiedRange: {x: 0, y: 0}
+  - customerPrefab: {fileID: 0}
+    BaseRate: 0
+    BaseRange: {x: 0, y: 0}
+    StopCount: 0
+    ModifiedRate: 0
+    ModifiedRange: {x: 0, y: 0}
 --- !u!1 &1972931203
 GameObject:
   m_ObjectHideFlags: 0
