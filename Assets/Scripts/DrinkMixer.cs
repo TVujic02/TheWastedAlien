@@ -23,6 +23,9 @@ public class DrinkMixer : MonoBehaviour, IUtensil
     [Tooltip("The amount of time needed to complete the shake.")]
     private float shakeTime = 2f;
 
+    [SerializeField]
+    [Tooltip("The different recipes that ur able to make with this mixer.")]
+    private List<Recipe> recipes = new List<Recipe>();
     //Private variable
     private List<Ingridient> storedIngridients = new List<Ingridient>();
     private Vector2 mousePosDifference = Vector2.zero;
@@ -101,8 +104,22 @@ public class DrinkMixer : MonoBehaviour, IUtensil
 
     private void Mix()
     {
-        //Implement mix logic
-        foreach(Ingridient ingridient in storedIngridients)
+        GameObject result = null;
+        foreach(Recipe recipe in recipes)
+        {
+            if(recipe.CompareIngridients(storedIngridients, out result)) //Returns true if we matched the recipe
+            {
+                Instantiate(result, transform.position, transform.rotation); //Instatiate the drink created by the recipe
+                return; //Exit out of the function
+            }
+        }
+        //If we havent exited yet there was no matching recipes
+        ReleaseIngridients();
+    }
+
+    private void ReleaseIngridients()
+    {
+        foreach (Ingridient ingridient in storedIngridients)
         {
             ingridient.gameObject.SetActive(true); //Release the ingridient
             ingridient.transform.SetParent(null);
