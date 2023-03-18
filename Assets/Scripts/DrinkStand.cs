@@ -29,6 +29,8 @@ public class DrinkStand : MonoBehaviour
     private float t = 0f;
     private List<Vector3> drinkStartPositions = new List<Vector3>();
 
+    public bool CanAddDrink => drinkRow.Count < maxDrinks;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -70,14 +72,13 @@ public class DrinkStand : MonoBehaviour
         }
     }
 
-    public bool TryAddDrink(GameObject drink)
+    public void AddDrink(GameObject drink)
     {
         if (drinkRow.Count >= maxDrinks)
-            return false;
+            return;
         drinkRow.Add(drink);
         drink.transform.position = drinkStandStart.position + (Vector3.right * (drinkRow.Count - 1) * drinkDistance); //Position it last in the row
         drinkStartPositions.Add(drink.transform.position);
-        return true;
     }
 
     private void RemoveDrink(GameObject drink)

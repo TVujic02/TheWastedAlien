@@ -30,6 +30,9 @@ public class DrinkMixer : MonoBehaviour, IUtensil
     [SerializeField]
     [Tooltip("Reference to the drink stand.")]
     private DrinkStand drinkStand;
+    [SerializeField]
+    [Tooltip("Reference to the drink show port.")]
+    private DrinkShowPort drinkShowPort;
 
     //Private variable
     private List<Ingridient> storedIngridients = new List<Ingridient>();
@@ -38,11 +41,13 @@ public class DrinkMixer : MonoBehaviour, IUtensil
     private float previousTimer = PREVIOUS_TIMER_MAX;
     private float shakeTimer = 0;
     private bool shaking = false;
+    private GameObject storedDrink = null;
 
     // Start is called before the first frame update
     void Start()
     {
         storedPos = transform.position;
+        drinkShowPort.DrinkShowEnd.AddListener(OnShowEnded);
     }
 
     // Update is called once per frame
@@ -109,20 +114,27 @@ public class DrinkMixer : MonoBehaviour, IUtensil
 
     private void Mix()
     {
+        //If there is already a drink stored we dont mix a new one
+        if (storedDrink != null)
+            return;
+
         GameObject result = null;
         foreach(Recipe recipe in recipes)
         {
             if(recipe.CompareIngridients(storedIngridients, out result)) //Returns true if we matched the recipe
             {
                 GameObject instance = Instantiate(result, transform.position, transform.rotation); //Instatiate the drink created by the recipe
-                bool addedDrink = drinkStand.TryAddDrink(instance); //Add it to the stand
-                if (addedDrink) //If there was enough space on the stand
+                bool canAddDrink = drinkStand.CanAddDrink; //See if we can add the drink
+                if (canAddDrink) //If there was enough space on the stand
                 {
                     foreach (Ingridient ingridient in storedIngridients) //Remove stored ingridients
                     {
                         Destroy(ingridient.gameObject);
                     }
                     storedIngridients.Clear();
+
+                    drinkShowPort.DrinkShowStart?.Invoke(instance);
+                    storedDrink = instance; //Store the drink
                 }
                 else //If there wasnt enough space on the stand
                 {
@@ -144,5 +156,11 @@ public class DrinkMixer : MonoBehaviour, IUtensil
             ingridient.transform.SetParent(null);
         }
         storedIngridients.Clear(); //Remove all ingridients from the list
+    }
+
+    private void OnShowEnded()
+    {
+        drinkStand.AddDrink(storedDrink);
+        storedDrink = null;
     }
 }

@@ -46,6 +46,7 @@ public class CustomerHandler : MonoBehaviour
     private bool repositioning = false;
     private float t = 0;
     private bool routineRunning = false;
+    private bool firstRepositioning = false;
 
     // Start is called before the first frame update
     void Start()
@@ -56,6 +57,19 @@ public class CustomerHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Ordering
+        if((repositioning || routineRunning) && firstRepositioning)
+        {
+            Customer firstCustomer = customers.Peek();
+
+            if(firstCustomer.GetIfCorrrectPosition)
+            {
+                firstCustomer.Order();
+                firstRepositioning = false;
+            }
+        }
+
+        //Repositioning
         if (repositioning)
         {
             //Check if the customers have reached their targets
@@ -71,7 +85,6 @@ public class CustomerHandler : MonoBehaviour
             if (allTargetsReached) //All targets have been reached
             {
                 repositioning = false; 
-                customers.Peek().Order(); //The first customer in the queue starts their order
             }
         }
         else if(!routineRunning)
@@ -108,6 +121,7 @@ public class CustomerHandler : MonoBehaviour
                 {
                     GameObject obj = Instantiate(data.customerPrefab, customerSpawnPoint.position, Quaternion.identity); //Spawn at spawnPoint
                     Customer newCustomer = obj.GetComponent<Customer>();
+                    if (customers.Count == 0) firstRepositioning = true;
                     customers.Enqueue(newCustomer); //Add it to the queue
                     newCustomer.CustomerServed.AddListener(OnCustomerServed);
                     newCustomer.Reposition(customerOrderingPoint.position + (Vector3.left * distanceBetweenCustomers * (customers.Count - 1))); //Reposition it from the spawnpoint to the correct position
@@ -133,6 +147,8 @@ public class CustomerHandler : MonoBehaviour
     private IEnumerator RepositioningRoutine()
     {
         yield return new WaitForSeconds(0.5f);
+        firstRepositioning = true;
+
         //Start repositioning of the other customers
         int index = 0;
         foreach (Customer customer in customers)

@@ -168,7 +168,7 @@ GameObject:
   - component: {fileID: 82677505}
   - component: {fileID: 82677506}
   m_Layer: 0
-  m_Name: CosmicFizz
+  m_Name: DrinkSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -229,7 +229,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 100
+  m_SortingOrder: 102
   m_Sprite: {fileID: 21300000, guid: 62db7fac3135a0944ad193fa10c46abe, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -417,7 +417,7 @@ Transform:
   m_LocalScale: {x: 25, y: 15, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1303147612}
+  m_Father: {fileID: 608428327}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &188998272
@@ -462,7 +462,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 100
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.26633143, g: 0.858051, b: 0.8962264, a: 0.77254903}
+  m_Color: {r: 0.26633143, g: 0.858051, b: 0.8962264, a: 0.7607843}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -906,6 +906,60 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 552946190}
   m_CullTransparentMesh: 1
+--- !u!1 &608428326
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 608428327}
+  - component: {fileID: 608428328}
+  m_Layer: 0
+  m_Name: DrinkShow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &608428327
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 608428326}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1571595075}
+  - {fileID: 188998271}
+  - {fileID: 1010811876}
+  m_Father: {fileID: 1303147612}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &608428328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 608428326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be3b90c37dea292429efe6a00002fd17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadingRenderers:
+  - {fileID: 82677506}
+  - {fileID: 188998272}
+  - {fileID: 1010811878}
+  drinkSpriteRenderer: {fileID: 82677506}
+  fadeSpeed: 3
+  drinkShowPort: {fileID: 11400000, guid: 541452174a384914b82e83fd80482b48, type: 2}
 --- !u!1 &622075089
 GameObject:
   m_ObjectHideFlags: 0
@@ -1570,7 +1624,7 @@ Transform:
   m_LocalScale: {x: 1.6364, y: 2.4124115, z: 1.6364}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1303147612}
+  m_Father: {fileID: 608428327}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1010811877
@@ -1626,7 +1680,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 100
+  m_SortingOrder: 101
   m_Sprite: {fileID: 21300000, guid: e101f37df7cc8b44cb5973bbca6067a5, type: 3}
   m_Color: {r: 0.9182595, g: 0.9811321, b: 0.22677112, a: 1}
   m_FlipX: 0
@@ -3215,9 +3269,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1571595075}
-  - {fileID: 188998271}
-  - {fileID: 1010811876}
+  - {fileID: 608428327}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3610,11 +3662,11 @@ Transform:
   m_GameObject: {fileID: 1571595074}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.00012207031, y: 0, z: 0}
-  m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 82677505}
-  m_Father: {fileID: 1303147612}
+  m_Father: {fileID: 608428327}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1577699858
@@ -4292,6 +4344,7 @@ MonoBehaviour:
   recipes:
   - {fileID: 11400000, guid: 44211b5f314a9e24f991c0f2e9f843b9, type: 2}
   drinkStand: {fileID: 1972931206}
+  drinkShowPort: {fileID: 11400000, guid: 541452174a384914b82e83fd80482b48, type: 2}
 --- !u!61 &1760515021
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4592,13 +4645,11 @@ MonoBehaviour:
   - customerPrefab: {fileID: 7107552791347746416, guid: d59129c73813eb046b4de0c65f344a2e, type: 3}
     BaseRate: 0.5
     BaseRange: {x: 0, y: 100}
-    StopCount: 0
     ModifiedRate: 0
     ModifiedRange: {x: 0, y: 0}
   - customerPrefab: {fileID: 8460232591279121542, guid: 22ee2445feea8f447b4ff5d03ff53211, type: 3}
     BaseRate: 0.5
     BaseRange: {x: 0, y: 100}
-    StopCount: 0
     ModifiedRate: 0
     ModifiedRange: {x: 0, y: 0}
 --- !u!1 &1972931203
