@@ -24,7 +24,7 @@ public class Fridge : MonoBehaviour
     [Tooltip("The point where all the ingridents are spawned.")]
     private Transform ingridientSpawnPoint;
 
-    private int currentSet = 0;
+    private int currentSet = 1;
     private SpriteRenderer spriteRenderer;
 
     // Start is called before the first frame update
@@ -32,6 +32,9 @@ public class Fridge : MonoBehaviour
     {
         sidebar.SetActive(false);
         spriteRenderer = GetComponent<SpriteRenderer>();
+        sidebar.SetActive(false);
+        ActivateSet(-1); //No set has this index
+        spriteRenderer.sprite = closedSprite;
     }
 
     // Update is called once per frame
@@ -58,7 +61,7 @@ public class Fridge : MonoBehaviour
     {
         for(int i = 0; i < ingridientSets.Count; i++) 
         {
-            if(i == index)
+            if(i == index - 1)
             {
                 ingridientSets[i].SetActive(true); //Activate index
             }

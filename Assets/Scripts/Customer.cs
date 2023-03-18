@@ -12,10 +12,15 @@ public class Customer : MonoBehaviour
     [Tooltip("The movement speed used when this customer is repositioning.")]
     private float moveSpeed = 1f;
 
+    [SerializeField]
+    [Tooltip("The ordering data for this customer.")]
+    private List<CustomerOrderingData> orderingData = new List<CustomerOrderingData>();
+
     //Private variables
     private bool correctPosition = false;
     private bool ordering = false;
     private Vector3 targetPosition = Vector3.zero;
+    private Drink desiredDrink = null;
 
     //Properties
     public bool GetIfCorrrectPosition => correctPosition;
@@ -49,6 +54,22 @@ public class Customer : MonoBehaviour
     public void Order()
     {
         ordering = true;
+        if(desiredDrink == null) //If the drink hasnt been set yet
+        {
+            foreach (CustomerOrderingData data in orderingData)
+            {
+                float r = Random.Range(0.0f, 1.0f);
+                if (r >= data.OrderRate) //If the check is succeded
+                {
+                    desiredDrink = data.DesiredDrink;
+                    break;
+                }
+                else if(data == orderingData[orderingData.Count-1]) //If its the last data we want that drink to be ordered
+                {
+                    desiredDrink = data.DesiredDrink;
+                }
+            }
+        }
     }
 
     public bool ServeCustomer()
@@ -57,6 +78,7 @@ public class Customer : MonoBehaviour
         {
             CustomerServed?.Invoke();
             ordering = false;
+            desiredDrink = null;
             return true;
         }
         return false;
@@ -67,4 +89,14 @@ public class Customer : MonoBehaviour
         correctPosition = false;
         targetPosition = newPosition;
     }
+}
+
+public class CustomerOrderingData
+{
+    [Tooltip("The drink that is wanted.")]
+    public Drink DesiredDrink;
+
+    [Range(0.0f,1.0f)]
+    [Tooltip("The chance that this customer will order that drink.")]
+    public float OrderRate = 0.5f;
 }
