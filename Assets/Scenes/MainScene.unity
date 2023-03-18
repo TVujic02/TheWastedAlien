@@ -5376,7 +5376,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxIngridientAmount: 3
-  shakeThreshold: 0.5
+  shakeThreshold: 1.2
   shakeTime: 1.5
   recipes:
   - {fileID: 11400000, guid: 44211b5f314a9e24f991c0f2e9f843b9, type: 2}

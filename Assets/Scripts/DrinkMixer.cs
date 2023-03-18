@@ -7,7 +7,7 @@ using UnityEngine;
 public class DrinkMixer : MonoBehaviour, IUtensil
 {
     //Constants
-    private const float PREVIOUS_TIMER_MAX = 0.3f;
+    private const float PREVIOUS_TIMER_MAX = 0.05f;
     private const int MIN_INGRIDIENT_AMOUNT = 2;
 
     //Inspector variables
@@ -56,6 +56,7 @@ public class DrinkMixer : MonoBehaviour, IUtensil
     private float previousTimer = PREVIOUS_TIMER_MAX;
     private float shakeTimer = 0;
     private bool shaking = false;
+    private bool playedExitSound = false;
     private GameObject storedDrink = null;
 
     // Start is called before the first frame update
@@ -81,16 +82,18 @@ public class DrinkMixer : MonoBehaviour, IUtensil
                 if(shakerSource != null && !shakerSource.isPlaying) 
                 {
                     shakerSource.Play();
+                    playedExitSound = false;
                 }
             }
             else
             {
                 shaking = false; //The mixer isnt being shaked enough
-                if (shakerSource.isPlaying)
+                if (shakerSource.isPlaying && !playedExitSound)
                 {
                     //Play shaker exit audio
                     shakerSource.Stop();
                     shakerSource.PlayOneShot(shakerExitClip); //Play exit clip as one shot
+                    playedExitSound = true;
                 }
             }
             previousTimer = PREVIOUS_TIMER_MAX;
