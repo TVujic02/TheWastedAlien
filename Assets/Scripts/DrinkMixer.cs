@@ -47,7 +47,7 @@ public class DrinkMixer : MonoBehaviour, IUtensil
 
     [SerializeField]
     [Tooltip("Reference to the exit clip of the shaker.")]
-    private AudioClip shakerExitClip;
+    private AudioClip[] shakerExitClips;
 
     //Private variable
     private List<Ingridient> storedIngridients = new List<Ingridient>();
@@ -92,7 +92,7 @@ public class DrinkMixer : MonoBehaviour, IUtensil
                 {
                     //Play shaker exit audio
                     shakerSource.Stop();
-                    shakerSource.PlayOneShot(shakerExitClip); //Play exit clip as one shot
+                    shakerSource.PlayOneShot(shakerExitClips[Random.Range(0, shakerExitClips.Length-1)]); //Play exit clip as one shot
                     playedExitSound = true;
                 }
             }

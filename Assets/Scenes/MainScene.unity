@@ -5376,7 +5376,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxIngridientAmount: 3
-  shakeThreshold: 1.2
+  shakeThreshold: 1.1
   shakeTime: 1.5
   recipes:
   - {fileID: 11400000, guid: 44211b5f314a9e24f991c0f2e9f843b9, type: 2}
@@ -5385,7 +5385,9 @@ MonoBehaviour:
   drinkShowPort: {fileID: 11400000, guid: 541452174a384914b82e83fd80482b48, type: 2}
   mixerIndicator: {fileID: 1384304854}
   shakerSource: {fileID: 1760515022}
-  shakerExitClip: {fileID: 8300000, guid: 9cc5c6db159ae6544ad762c7cbcbdcff, type: 3}
+  shakerExitClips:
+  - {fileID: 8300000, guid: cef7384175f1a7241b95e1b4df44bea5, type: 3}
+  - {fileID: 8300000, guid: 9cc5c6db159ae6544ad762c7cbcbdcff, type: 3}
 --- !u!61 &1760515021
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5421,7 +5423,7 @@ AudioSource:
   m_GameObject: {fileID: 1760515016}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 9ef1a1a18cc43fc42b8ebd98bb5b4e8a, type: 2}
+  OutputAudioMixerGroup: {fileID: 3254609676963564357, guid: 9ef1a1a18cc43fc42b8ebd98bb5b4e8a, type: 2}
   m_audioClip: {fileID: 8300000, guid: c530c935219f5e64dba6c13f48784621, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
