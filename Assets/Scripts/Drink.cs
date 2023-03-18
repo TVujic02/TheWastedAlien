@@ -10,6 +10,7 @@ public class Drink : MonoBehaviour
     private string drinkID = string.Empty;
 
     [SerializeField]
+    [TextArea]
     [Tooltip("The description of the drink used in the drink show.")]
     private string drinkDescription = string.Empty;
 
