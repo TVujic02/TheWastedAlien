@@ -5,6 +5,14 @@ using UnityEngine;
 public class Fridge : MonoBehaviour
 {
     [SerializeField]
+    [Tooltip("Sprite for when the fridge is closed.")]
+    private Sprite closedSprite;
+
+    [SerializeField]
+    [Tooltip("Sprite for when the fridge is open.")]
+    private Sprite openSprite;
+
+    [SerializeField]
     [Tooltip("The sidebar used to control the different ingridient sets.")]
     private GameObject sidebar;
 
@@ -17,11 +25,13 @@ public class Fridge : MonoBehaviour
     private Transform ingridientSpawnPoint;
 
     private int currentSet = 0;
+    private SpriteRenderer renderer;
 
     // Start is called before the first frame update
     void Start()
     {
         sidebar.SetActive(false);
+        renderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -34,12 +44,14 @@ public class Fridge : MonoBehaviour
     {
         sidebar.SetActive(true);
         ActivateSet(currentSet);
+        renderer.sprite = openSprite;
     }
 
     private void OnMouseExit()
     {
         sidebar.SetActive(false);
         ActivateSet(-1); //No set has this index
+        renderer.sprite = closedSprite;
     }
 
     public void ActivateSet(int index)
