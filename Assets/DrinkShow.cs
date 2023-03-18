@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class DrinkShow : MonoBehaviour
 {
@@ -11,6 +12,13 @@ public class DrinkShow : MonoBehaviour
     [SerializeField]
     [Tooltip("Referemce to the drink sprite renderer.")]
     private SpriteRenderer drinkSpriteRenderer;
+
+    [SerializeField]
+    [Tooltip("The text object that displays the name of the drink.")]
+    private TextMeshProUGUI nameText;
+    [SerializeField]
+    [Tooltip("The text object that displays the description of the drink.")]
+    private TextMeshProUGUI descriptionText;
 
     [SerializeField]
     [Tooltip("The speed that the renderers are faded in and out.")]
@@ -27,11 +35,15 @@ public class DrinkShow : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Set alpha values
         foreach (SpriteRenderer renderer in fadingRenderers)
         {
             maxOpacity.Add(renderer, renderer.color.a);
             renderer.color = new Color(renderer.color.r, renderer.color.g, renderer.color.b, fade);
         }
+        nameText.alpha = fade;
+        descriptionText.alpha = fade;
+
         gameObject.SetActive(false);
         drinkShowPort.DrinkShowStart.AddListener(StartDrinkShow);
     }
@@ -56,10 +68,13 @@ public class DrinkShow : MonoBehaviour
             else
             {
                 fade += Time.deltaTime * fadeSpeed;
+                //Set alpha values
                 foreach(SpriteRenderer renderer in fadingRenderers)
                 {
                     renderer.color = new Color(renderer.color.r, renderer.color.g, renderer.color.b, Mathf.Lerp(0, maxOpacity[renderer], fade));
                 }
+                nameText.alpha = fade;
+                descriptionText.alpha = fade;
             }
         }
 
@@ -77,21 +92,26 @@ public class DrinkShow : MonoBehaviour
             else
             {
                 fade -= Time.deltaTime * fadeSpeed;
+                //Set alpha values
                 foreach (SpriteRenderer renderer in fadingRenderers)
                 {
                     renderer.color = new Color(renderer.color.r, renderer.color.g, renderer.color.b, Mathf.Lerp(0, maxOpacity[renderer], fade));
                 }
+                nameText.alpha = fade;
+                descriptionText.alpha = fade;
             }
         }
     }
 
     public void StartDrinkShow(GameObject drink)
     {
-        Sprite drinkSprite = drink.GetComponent<Drink>().GetDrinkSprite;
+        Drink drinkScript = drink.GetComponent<Drink>();
+        Sprite drinkSprite = drinkScript.GetDrinkSprite;
         gameObject.SetActive(true);
         fadingIn = true;
         drinkSpriteRenderer.sprite = drinkSprite;
+        nameText.text = drinkScript.DrinkID;
+        descriptionText.text = drinkScript.DrinkDescription;
         fade = 0;
-
     }
 }

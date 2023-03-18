@@ -10,6 +10,10 @@ public class Drink : MonoBehaviour
     private string drinkID = string.Empty;
 
     [SerializeField]
+    [Tooltip("The description of the drink used in the drink show.")]
+    private string drinkDescription = string.Empty;
+
+    [SerializeField]
     [Tooltip("The radius used to check for interactions when the obejct is dropped")]
     private float dropCheckRange = 1f;
 
@@ -29,6 +33,8 @@ public class Drink : MonoBehaviour
     public string DrinkID { get => drinkID; set => drinkID = value; }
 
     public Sprite GetDrinkSprite => drinkSprite;
+
+    public string DrinkDescription { get => drinkDescription; set => drinkDescription = value; }
 
     // Start is called before the first frame update
     void Start()
