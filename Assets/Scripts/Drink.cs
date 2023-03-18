@@ -9,6 +9,14 @@ public class Drink : MonoBehaviour
     [Tooltip("A string used to identify this ingridient in recipies.")]
     private string drinkID = string.Empty;
 
+    [SerializeField]
+    [Tooltip("The radius used to check for interactions when the obejct is dropped")]
+    private float dropCheckRange = 1f;
+
+    [SerializeField]
+    [Tooltip("Reference to the drinkdelivered port.")]
+    private DrinkDeliveredPort drinkDeliveredPort;
+
     //Private variables
     private Vector2 mousePosDifference = Vector2.zero;
     private Vector3 startPos = Vector3.zero;
@@ -43,5 +51,23 @@ public class Drink : MonoBehaviour
     {
         //Reset the position
         transform.position = startPos;
+
+        //Interaction with customers
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, dropCheckRange);
+        Customer customer = null;
+        foreach (Collider2D other in colliders) //Look through the colliders for a customer
+        {
+            customer = other.GetComponent<Customer>();
+            if (customer != null) break;
+        }
+        if (customer != null)
+        {
+            bool wasServed = customer.ServeCustomer(); //Serve this customer (yas)
+            if(wasServed)
+            {
+                drinkDeliveredPort.DrinkDelivered?.Invoke(gameObject); //Broadcast that the drink has been delivered
+                Destroy(gameObject); //Remove the drink
+            }
+        }
     }
 }

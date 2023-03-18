@@ -883,7 +883,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 874161836}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15, y: 0.8, z: 0}
+  m_LocalPosition: {x: -12, y: 1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2474,7 +2474,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1634620058}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15, y: 0.8, z: 0}
+  m_LocalPosition: {x: 12, y: 1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3174,23 +3174,18 @@ MonoBehaviour:
   customerSpawnPoint: {fileID: 874161837}
   customerOrderingPoint: {fileID: 2110828270}
   customerExitPoint: {fileID: 1634620059}
-  spawnTimeRange: {x: 0, y: 1}
+  distanceBetweenCustomers: 2
+  spawnTimeRange: {x: 1, y: 3}
   customerSpawnRateDatas:
-  - customerPrefab: {fileID: 0}
-    BaseRate: 0
-    BaseRange: {x: 0, y: 0}
+  - customerPrefab: {fileID: 7107552791347746416, guid: d59129c73813eb046b4de0c65f344a2e, type: 3}
+    BaseRate: 0.5
+    BaseRange: {x: 0, y: 100}
     StopCount: 0
     ModifiedRate: 0
     ModifiedRange: {x: 0, y: 0}
-  - customerPrefab: {fileID: 0}
-    BaseRate: 0
-    BaseRange: {x: 0, y: 0}
-    StopCount: 0
-    ModifiedRate: 0
-    ModifiedRange: {x: 0, y: 0}
-  - customerPrefab: {fileID: 0}
-    BaseRate: 0
-    BaseRange: {x: 0, y: 0}
+  - customerPrefab: {fileID: 8460232591279121542, guid: 22ee2445feea8f447b4ff5d03ff53211, type: 3}
+    BaseRate: 0.5
+    BaseRange: {x: 0, y: 100}
     StopCount: 0
     ModifiedRate: 0
     ModifiedRange: {x: 0, y: 0}
@@ -3538,7 +3533,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2110828269}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.8, z: 0}
+  m_LocalPosition: {x: 0, y: 1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
