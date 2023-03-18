@@ -12,7 +12,9 @@ GameObject:
   - component: {fileID: 2176299698094989396}
   - component: {fileID: 2176299698094989353}
   - component: {fileID: 2176299698094989398}
-  - component: {fileID: -2861604821700846696}
+  - component: {fileID: -4286636607587251219}
+  - component: {fileID: 4978945381784301849}
+  - component: {fileID: 2759650524717823402}
   m_Layer: 0
   m_Name: Alien
   m_TagString: Untagged
@@ -104,10 +106,10 @@ MonoBehaviour:
   dropCheckRange: 1
   ingridientSprite: {fileID: 21300000, guid: 392e86781d9624e40916bc96381b8a70, type: 3}
   Crushable: 1
-  Cutable: 0
+  Cutable: 1
   Fryable: 0
   CrushResult: {fileID: 4665853875902414866, guid: 596cd9a4bea688e4cb0b0ab3cb5eb8fb, type: 3}
-  CutResult: {fileID: 0}
+  CutResult: {fileID: 4690887987207688397, guid: ce626a255d74eaf4f89ddf9cb2638dd1, type: 3}
   FryResult: {fileID: 0}
 --- !u!50 &2176299698094989398
 Rigidbody2D:
@@ -130,8 +132,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!68 &-2861604821700846696
-EdgeCollider2D:
+--- !u!58 &-4286636607587251219
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -143,23 +145,38 @@ EdgeCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
-  m_Points:
-  - {x: -4.1554165, y: 0.98387456}
-  - {x: -2.9019303, y: 2.1413746}
-  - {x: -2.8422513, y: 3.5179698}
-  - {x: -0.38003302, y: 3.9621964}
-  - {x: 2.056697, y: 2.7597735}
-  - {x: 3.406114, y: 1.6604731}
-  - {x: 3.899047, y: -1.672401}
-  - {x: 2.4202824, y: -3.8384724}
-  - {x: 0.120919704, y: -3.7827091}
-  - {x: -1.3879724, y: -2.9542444}
-  - {x: -2.1348243, y: -1.0618529}
-  - {x: -1.8581176, y: 0.34866714}
-  - {x: -4.1728783, y: 0.9120922}
-  m_AdjacentStartPoint: {x: 0, y: 0}
-  m_AdjacentEndPoint: {x: 0, y: 0}
-  m_UseAdjacentStartPoint: 0
-  m_UseAdjacentEndPoint: 0
+  m_Offset: {x: -0.2494905, y: 0.39970088}
+  serializedVersion: 2
+  m_Radius: 0.6612508
+--- !u!58 &4978945381784301849
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2176299698094989397}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.03723231, y: -0.33508125}
+  serializedVersion: 2
+  m_Radius: 0.46784887
+--- !u!58 &2759650524717823402
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2176299698094989397}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.39002025, y: -0.16527623}
+  serializedVersion: 2
+  m_Radius: 0.752915

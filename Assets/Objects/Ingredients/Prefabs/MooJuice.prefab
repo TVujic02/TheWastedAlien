@@ -103,10 +103,10 @@ MonoBehaviour:
   releaseForce: 500
   dropCheckRange: 1
   ingridientSprite: {fileID: 21300000, guid: 4d801dd87f0c89a49a96bb1ecf28034d, type: 3}
-  Crushable: 0
+  Crushable: 1
   Cutable: 0
   Fryable: 0
-  CrushResult: {fileID: 0}
+  CrushResult: {fileID: 4665853875902414866, guid: 80b49bcb43b8b604f9029e1b6ab435e6, type: 3}
   CutResult: {fileID: 0}
   FryResult: {fileID: 0}
 --- !u!50 &2176299698094989398
