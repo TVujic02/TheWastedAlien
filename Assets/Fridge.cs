@@ -32,7 +32,6 @@ public class Fridge : MonoBehaviour
     {
         sidebar.SetActive(false);
         spriteRenderer = GetComponent<SpriteRenderer>();
-        sidebar.SetActive(false);
         ActivateSet(-1); //No set has this index
         spriteRenderer.sprite = closedSprite;
     }
