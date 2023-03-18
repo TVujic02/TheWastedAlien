@@ -21,7 +21,7 @@ public class DrinkStand : MonoBehaviour
 
     [SerializeField]
     [Tooltip("Reference to the drinkdelivered port.")]
-    private DrinkDeliveredPort drinkDeliveredPort;
+    private DrinkDestroyedPort drinkDeliveredPort;
 
     //Private variables
     private List<GameObject> drinkRow = new List<GameObject>();
@@ -32,7 +32,7 @@ public class DrinkStand : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        drinkDeliveredPort.DrinkDelivered.AddListener(RemoveDrink);
+        drinkDeliveredPort.DrinkDestroyed.AddListener(RemoveDrink);
     }
 
     // Update is called once per frame

@@ -15,7 +15,7 @@ public class Drink : MonoBehaviour
 
     [SerializeField]
     [Tooltip("Reference to the drinkdelivered port.")]
-    private DrinkDeliveredPort drinkDeliveredPort;
+    private DrinkDestroyedPort drinkDestroyedPort;
 
     [SerializeField]
     [Tooltip("The sprite used when a customer wants this drink.")]
@@ -68,9 +68,23 @@ public class Drink : MonoBehaviour
             bool wasServed = customer.ServeCustomer(this); //Serve this customer (yas)
             if(wasServed)
             {
-                drinkDeliveredPort.DrinkDelivered?.Invoke(gameObject); //Broadcast that the drink has been delivered
+                drinkDestroyedPort.DrinkDestroyed?.Invoke(gameObject); //Broadcast that the drink has been delivered
                 Destroy(gameObject); //Remove the drink
+                return;
             }
+        }
+
+        TrashCan trashCan = null;
+        foreach(Collider2D other in colliders) //Look trough the colliders for a trash can
+        {
+            trashCan = other.GetComponent<TrashCan>();
+            if (trashCan != null) break;
+        }
+        if(trashCan != null)
+        {
+            drinkDestroyedPort.DrinkDestroyed?.Invoke(gameObject); //Broadcast that the drink has been delivered
+            Destroy(gameObject); //Remove the drink
+            return;
         }
 
         //Reset the position

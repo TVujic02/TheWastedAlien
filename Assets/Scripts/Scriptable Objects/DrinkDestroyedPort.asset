@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e1c64d7e758f5f14c95cc10e868cb644, type: 3}
-  m_Name: DrinkDeliveredPort
+  m_Name: DrinkDestroyedPort
   m_EditorClassIdentifier: 
-  DrinkDelivered:
+  DrinkDestroyed:
     m_PersistentCalls:
       m_Calls: []
