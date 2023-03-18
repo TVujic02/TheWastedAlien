@@ -25,13 +25,13 @@ public class Fridge : MonoBehaviour
     private Transform ingridientSpawnPoint;
 
     private int currentSet = 0;
-    private SpriteRenderer renderer;
+    private SpriteRenderer spriteRenderer;
 
     // Start is called before the first frame update
     void Start()
     {
         sidebar.SetActive(false);
-        renderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -44,14 +44,14 @@ public class Fridge : MonoBehaviour
     {
         sidebar.SetActive(true);
         ActivateSet(currentSet);
-        renderer.sprite = openSprite;
+        spriteRenderer.sprite = openSprite;
     }
 
     private void OnMouseExit()
     {
         sidebar.SetActive(false);
         ActivateSet(-1); //No set has this index
-        renderer.sprite = closedSprite;
+        spriteRenderer.sprite = closedSprite;
     }
 
     public void ActivateSet(int index)
