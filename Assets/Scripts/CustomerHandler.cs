@@ -24,6 +24,10 @@ public class CustomerHandler : MonoBehaviour
     [Tooltip("The amount of distance between all the customers in queue.")]
     private float distanceBetweenCustomers = 1;
 
+    [SerializeField]
+    [Tooltip("The max amount of customers allowed in queue.")]
+    private int maxCustomers = 8;
+
     [Header("Customer Spawning")]
     [SerializeField]
     [Tooltip("The minimum and maximum amount of time between the customer spawns.")]
@@ -73,8 +77,9 @@ public class CustomerHandler : MonoBehaviour
         {
             if (spawnTimer <= 0)
             {
-                SpawnCustomer();
-                spawnTimer = UnityEngine.Random.Range(spawnTimeRange.x, spawnTimeRange.y);
+                if(customers.Count < maxCustomers) //Spawn customer if we are within the limit
+                    SpawnCustomer();
+                spawnTimer = UnityEngine.Random.Range(spawnTimeRange.x, spawnTimeRange.y); //Set timer
             }
             else
                 spawnTimer -= Time.deltaTime;
