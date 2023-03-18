@@ -22,7 +22,6 @@ public class MixerIndicator : MonoBehaviour
     private GameObject indidcatorSpritePrefab;
 
     private List<SpriteRenderer> renderers = new List<SpriteRenderer>();
-    private float totalLength = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -44,7 +43,7 @@ public class MixerIndicator : MonoBehaviour
         }
         renderers.Clear();
 
-        totalLength = ingridientList.Count * distanceBetweenSprites; //Get the total length
+        float totalLength = (ingridientList.Count - 1) * distanceBetweenSprites; //Get the total length
         float startPosX = transform.position.x - totalLength / 2; //Use the total length to get the startpos
 
         //Create the new layout
@@ -55,7 +54,7 @@ public class MixerIndicator : MonoBehaviour
             indicatorRenderer.sprite = ingridientList[i].GetIngridientSprite; //Get the sprite
             renderers.Add(indicatorRenderer);
         }
-        scrapButton.transform.position = new Vector3(transform.position.x + totalLength/2, transform.position.y); //Set the position of the scrap button
+        scrapButton.transform.position = new Vector3(transform.position.x + totalLength/2 + distanceBetweenSprites, transform.position.y); //Set the position of the scrap button
         if (ingridientList.Count == 0)
             scrapButton.SetActive(false);
         else
