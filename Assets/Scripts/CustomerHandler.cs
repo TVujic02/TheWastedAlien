@@ -103,7 +103,7 @@ public class CustomerHandler : MonoBehaviour
             if (customersSpawned >= data.BaseRange.x && customersSpawned < data.BaseRange.y) //If the customer count is within the base range
             {
                 float r = UnityEngine.Random.Range(0.0f, 1.0f); //Get a random float used to detirmine if this customer should be spawned
-                if (r >= data.BaseRate) //If we succeded the check
+                if (r <= data.BaseRate) //If we succeded the check
                 {
                     GameObject obj = Instantiate(data.customerPrefab, customerSpawnPoint.position, Quaternion.identity); //Spawn at spawnPoint
                     Customer newCustomer = obj.GetComponent<Customer>();

@@ -26,7 +26,7 @@ public class Customer : MonoBehaviour
     private bool correctPosition = false;
     private bool ordering = false;
     private Vector3 targetPosition = Vector3.zero;
-    private Drink desiredDrink = null;
+    private string desiredDrink = string.Empty;
 
     //Properties
     public bool GetIfCorrrectPosition => correctPosition;
@@ -37,7 +37,7 @@ public class Customer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        orderRenderer.sprite = null;
     }
 
     // Update is called once per frame
@@ -60,20 +60,20 @@ public class Customer : MonoBehaviour
     public void Order()
     {
         ordering = true;
-        if(desiredDrink == null) //If the drink hasnt been set yet
+        if(desiredDrink == string.Empty) //If the drink hasnt been set yet
         {
             foreach (CustomerOrderingData data in orderingData)
             {
                 float r = UnityEngine.Random.Range(0.0f, 1.0f);
-                if (r >= data.OrderRate) //If the check is succeded
+                if (r <= data.OrderRate) //If the check is succeded
                 {
-                    desiredDrink = data.DesiredDrink;
+                    desiredDrink = data.DesiredDrink.DrinkID;
                     orderRenderer.sprite = data.DesiredDrink.GetDrinkSprite;
                     break;
                 }
                 else if(data == orderingData[orderingData.Count-1]) //If its the last data we want that drink to be ordered
                 {
-                    desiredDrink = data.DesiredDrink;
+                    desiredDrink = data.DesiredDrink.DrinkID;
                     orderRenderer.sprite = data.DesiredDrink.GetDrinkSprite;
                 }
             }
@@ -82,11 +82,11 @@ public class Customer : MonoBehaviour
 
     public bool ServeCustomer(Drink servingDrink)
     {
-        if(ordering && desiredDrink == servingDrink)
+        if(ordering && desiredDrink == servingDrink.DrinkID)
         {
             CustomerServed?.Invoke();
             ordering = false;
-            desiredDrink = null;
+            desiredDrink = string.Empty;
             orderRenderer.sprite = null;
             return true;
         }

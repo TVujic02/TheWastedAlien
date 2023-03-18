@@ -101,6 +101,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 2
+  orderingData:
+  - DesiredDrink: {fileID: 8501565638140027106, guid: 466a5a4a7bf0be74bbe1053fa42d04f1, type: 3}
+    OrderRate: 1
   orderRenderer: {fileID: 8557815508975977147}
   CustomerServed:
     m_PersistentCalls:
@@ -224,7 +227,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 11
   m_Sprite: {fileID: 21300000, guid: 62db7fac3135a0944ad193fa10c46abe, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

@@ -17,6 +17,10 @@ public class Drink : MonoBehaviour
     [Tooltip("Reference to the drinkdelivered port.")]
     private DrinkDeliveredPort drinkDeliveredPort;
 
+    [SerializeField]
+    [Tooltip("The sprite used when a customer wants this drink.")]
+    private Sprite drinkSprite;
+
     //Private variables
     private Vector2 mousePosDifference = Vector2.zero;
     private Vector3 startPos = Vector3.zero;
@@ -24,7 +28,7 @@ public class Drink : MonoBehaviour
     //Properties
     public string DrinkID { get => drinkID; set => drinkID = value; }
 
-    public Sprite GetDrinkSprite => GetComponent<SpriteRenderer>().sprite;
+    public Sprite GetDrinkSprite => drinkSprite;
 
     // Start is called before the first frame update
     void Start()
