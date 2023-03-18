@@ -42,7 +42,7 @@ public class Fridge : MonoBehaviour
         
     }
 
-    private void OnMouseOver()
+    private void OnMouseEnter()
     {
         sidebar.SetActive(true);
         ActivateSet(currentSet);

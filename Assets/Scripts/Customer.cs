@@ -16,6 +16,10 @@ public class Customer : MonoBehaviour
     [Tooltip("The ordering data for this customer.")]
     private List<CustomerOrderingData> orderingData = new List<CustomerOrderingData>();
 
+    [SerializeField]
+    [Tooltip("The sprite renderer for the drink order.")]
+    private SpriteRenderer orderRenderer;
+
     //Private variables
     private bool correctPosition = false;
     private bool ordering = false;
