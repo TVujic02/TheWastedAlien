@@ -49,9 +49,6 @@ public class Drink : MonoBehaviour
     }
     private void OnMouseUpAsButton()
     {
-        //Reset the position
-        transform.position = startPos;
-
         //Interaction with customers
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, dropCheckRange);
         Customer customer = null;
@@ -69,5 +66,8 @@ public class Drink : MonoBehaviour
                 Destroy(gameObject); //Remove the drink
             }
         }
+
+        //Reset the position
+        transform.position = startPos;
     }
 }

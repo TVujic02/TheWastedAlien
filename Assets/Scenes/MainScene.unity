@@ -3174,7 +3174,8 @@ MonoBehaviour:
   customerSpawnPoint: {fileID: 874161837}
   customerOrderingPoint: {fileID: 2110828270}
   customerExitPoint: {fileID: 1634620059}
-  distanceBetweenCustomers: 2
+  distanceBetweenCustomers: 3
+  maxCustomers: 5
   spawnTimeRange: {x: 1, y: 3}
   customerSpawnRateDatas:
   - customerPrefab: {fileID: 7107552791347746416, guid: d59129c73813eb046b4de0c65f344a2e, type: 3}

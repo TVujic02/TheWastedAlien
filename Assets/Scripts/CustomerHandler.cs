@@ -104,7 +104,6 @@ public class CustomerHandler : MonoBehaviour
                 float r = UnityEngine.Random.Range(0.0f, 1.0f); //Get a random float used to detirmine if this customer should be spawned
                 if (r >= data.BaseRate) //If we succeded the check
                 {
-                    Debug.Log("Spawn");
                     GameObject obj = Instantiate(data.customerPrefab, customerSpawnPoint.position, Quaternion.identity); //Spawn at spawnPoint
                     Customer newCustomer = obj.GetComponent<Customer>();
                     customers.Enqueue(newCustomer); //Add it to the queue
