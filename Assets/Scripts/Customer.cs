@@ -72,9 +72,9 @@ public class Customer : MonoBehaviour
         }
     }
 
-    public bool ServeCustomer()
+    public bool ServeCustomer(Drink servingDrink)
     {
-        if(ordering)
+        if(ordering && desiredDrink == servingDrink)
         {
             CustomerServed?.Invoke();
             ordering = false;

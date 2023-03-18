@@ -59,7 +59,7 @@ public class Drink : MonoBehaviour
         }
         if (customer != null)
         {
-            bool wasServed = customer.ServeCustomer(); //Serve this customer (yas)
+            bool wasServed = customer.ServeCustomer(this); //Serve this customer (yas)
             if(wasServed)
             {
                 drinkDeliveredPort.DrinkDelivered?.Invoke(gameObject); //Broadcast that the drink has been delivered
