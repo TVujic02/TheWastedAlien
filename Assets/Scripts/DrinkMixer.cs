@@ -7,10 +7,11 @@ using UnityEngine;
 public class DrinkMixer : MonoBehaviour, IUtensil
 {
     //Constants
-    private const float PREVIOUS_TIMER_MAX = 0.4f;
+    private const float PREVIOUS_TIMER_MAX = 0.3f;
     private const int MIN_INGRIDIENT_AMOUNT = 2;
 
     //Inspector variables
+    [Header("Shaker Values")]
     [SerializeField]
     [Tooltip("The max amount of ingridients that can be stored.")]
     private int maxIngridientAmount = 3;
@@ -27,6 +28,7 @@ public class DrinkMixer : MonoBehaviour, IUtensil
     [Tooltip("The different recipes that ur able to make with this mixer.")]
     private List<Recipe> recipes = new List<Recipe>();
 
+    [Header("References")]
     [SerializeField]
     [Tooltip("Reference to the drink stand.")]
     private DrinkStand drinkStand;
@@ -37,6 +39,15 @@ public class DrinkMixer : MonoBehaviour, IUtensil
     [SerializeField]
     [Tooltip("Refrence to the Mixer Indicator.")]
     private MixerIndicator mixerIndicator;
+
+    [Header("Audio")]
+    [SerializeField]
+    [Tooltip("Reference to the audio source used for the shaker sounds.")]
+    private AudioSource shakerSource;
+
+    [SerializeField]
+    [Tooltip("Reference to the exit clip of the shaker.")]
+    private AudioClip shakerExitClip;
 
     //Private variable
     private List<Ingridient> storedIngridients = new List<Ingridient>();
@@ -66,10 +77,21 @@ public class DrinkMixer : MonoBehaviour, IUtensil
             if (Vector2.Distance((Vector2)transform.position, previousPos) > shakeThreshold) //If the distance moved is bigger we are shaking the mixer
             {
                 shaking = true;
+                //Shaking audio
+                if(shakerSource != null && !shakerSource.isPlaying) 
+                {
+                    shakerSource.Play();
+                }
             }
             else
             {
                 shaking = false; //The mixer isnt being shaked enough
+                if (shakerSource.isPlaying)
+                {
+                    //Play shaker exit audio
+                    shakerSource.Stop();
+                    shakerSource.PlayOneShot(shakerExitClip); //Play exit clip as one shot
+                }
             }
             previousTimer = PREVIOUS_TIMER_MAX;
         }
