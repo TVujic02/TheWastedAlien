@@ -100,6 +100,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drinkID: CosmicFizz
+  drinkDescription: 'WOHOOO!! This drink really get everything in your body bubbling!
+
+'
   dropCheckRange: 1
   drinkDestroyedPort: {fileID: 11400000, guid: 9e639c80e267f4f49b0ba015b638ed63, type: 2}
   drinkSprite: {fileID: 21300000, guid: 62db7fac3135a0944ad193fa10c46abe, type: 3}
