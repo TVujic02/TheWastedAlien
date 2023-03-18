@@ -49,7 +49,6 @@ public class Customer : MonoBehaviour
     public void Order()
     {
         ordering = true;
-        Debug.Log("Start order");
     }
 
     public bool ServeCustomer()

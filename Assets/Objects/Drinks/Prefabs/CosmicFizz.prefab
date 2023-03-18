@@ -100,6 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drinkID: CosmicFizz
+  dropCheckRange: 1
+  drinkDeliveredPort: {fileID: 11400000, guid: aa47322f51f43ca408dc4a0b93c1a4a7, type: 2}
 --- !u!50 &1870614141
 Rigidbody2D:
   serializedVersion: 4
@@ -138,7 +140,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.048, y: 2.048}
+    oldSize: {x: 1.28, y: 1.28}
     newSize: {x: 10.24, y: 10.24}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

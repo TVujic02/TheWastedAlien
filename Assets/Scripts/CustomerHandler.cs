@@ -69,7 +69,7 @@ public class CustomerHandler : MonoBehaviour
             }
             if (allTargetsReached) //All targets have been reached
             {
-                repositioning = false;
+                repositioning = false; 
                 customers.Peek().Order(); //The first customer in the queue starts their order
             }
         }
@@ -86,10 +86,11 @@ public class CustomerHandler : MonoBehaviour
 
         }
 
-        for(int i = customerExitBuffer.Count- 1; i >= 0;i--) //Check the buffer
+        for(int i = customerExitBuffer.Count - 1; i >= 0;i--) //Check the buffer
         {
             if (customerExitBuffer[i].GetIfCorrrectPosition) //Remove those who have reached the end position
             {
+                Destroy(customerExitBuffer[i].gameObject);
                 customerExitBuffer.RemoveAt(i);
             }
         }
@@ -109,6 +110,7 @@ public class CustomerHandler : MonoBehaviour
                     customers.Enqueue(newCustomer); //Add it to the queue
                     newCustomer.CustomerServed.AddListener(OnCustomerServed);
                     newCustomer.Reposition(customerOrderingPoint.position + (Vector3.left * distanceBetweenCustomers * (customers.Count - 1))); //Reposition it from the spawnpoint to the correct position
+                    repositioning = true;
                     customersSpawned++; //Increase counter
                     break;
                 }
