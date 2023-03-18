@@ -138,6 +138,7 @@ public class DrinkMixer : MonoBehaviour, IUtensil
                         Destroy(ingridient.gameObject);
                     }
                     storedIngridients.Clear();
+                    mixerIndicator.UpdateIndicator(storedIngridients); //Update indicator
 
                     drinkShowPort.DrinkShowStart?.Invoke(instance);
                     storedDrink = instance; //Store the drink
