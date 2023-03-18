@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dadf67a5bc62d042a11a9c111a97d3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ingridientID: IceCrushed
+  ingridientID: AlienCrushed
   releaseForce: 500
   dropCheckRange: 1
   Crushable: 0
