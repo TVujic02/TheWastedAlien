@@ -45,6 +45,7 @@ public class CustomerHandler : MonoBehaviour
     private int customersSpawned = 0;
     private bool repositioning = false;
     private float t = 0;
+    private bool routineRunning = false;
 
     // Start is called before the first frame update
     void Start()
@@ -73,7 +74,7 @@ public class CustomerHandler : MonoBehaviour
                 customers.Peek().Order(); //The first customer in the queue starts their order
             }
         }
-        else
+        else if(!routineRunning)
         {
             if (spawnTimer <= 0)
             {
@@ -103,7 +104,7 @@ public class CustomerHandler : MonoBehaviour
             if (customersSpawned >= data.BaseRange.x && customersSpawned < data.BaseRange.y) //If the customer count is within the base range
             {
                 float r = UnityEngine.Random.Range(0.0f, 1.0f); //Get a random float used to detirmine if this customer should be spawned
-                if (r <= data.BaseRate) //If we succeded the check
+                if (r <= data.BaseRate || data == customerSpawnRateDatas[customerSpawnRateDatas.Count-1]) //If we succeded the check or if its the last data
                 {
                     GameObject obj = Instantiate(data.customerPrefab, customerSpawnPoint.position, Quaternion.identity); //Spawn at spawnPoint
                     Customer newCustomer = obj.GetComponent<Customer>();
@@ -125,15 +126,25 @@ public class CustomerHandler : MonoBehaviour
         servedCustomer.Reposition(customerExitPoint.position); //Position it towards the exit
         customerExitBuffer.Add(servedCustomer); //Add it to the buffer so we can remove it when it has reached the exit point
 
+        StartCoroutine("RepositioningRoutine");
+        routineRunning = true;
+    }
+
+    private IEnumerator RepositioningRoutine()
+    {
+        yield return new WaitForSeconds(0.5f);
         //Start repositioning of the other customers
         int index = 0;
-        foreach(Customer customer in customers)
+        foreach (Customer customer in customers)
         {
             Vector3 newPosition = customerOrderingPoint.position + (Vector3.left * distanceBetweenCustomers * index);
             customer.Reposition(newPosition);
             index++;
+            yield return new WaitForSeconds(0.5f);
         }
         repositioning = true;
+        routineRunning = false;
+
     }
 }
 
@@ -150,9 +161,6 @@ public class CustomerSpawnRateData
 
     [Tooltip("The interval where only the BaseSpawnRate is used.")]
     public Vector2Int BaseRange = Vector2Int.zero;
-
-    [Tooltip("After this many customers spawned this customer will no longer spawn.")]
-    public int StopCount = 100;
 
     [Header("ModifiedRate")]
     [Range(0.0f,1.0f)]

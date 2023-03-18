@@ -14,6 +14,14 @@ public class Customer : MonoBehaviour
     private float moveSpeed = 1f;
 
     [SerializeField]
+    [Tooltip("The amount that the customer bobs when walking.")]
+    private float bobAmount = 0.1f;
+
+    [SerializeField]
+    [Tooltip("The speed at wich the customer bobs up and down.")]
+    private float bobSpeed = 3f;
+
+    [SerializeField]
     [NonReorderable]
     [Tooltip("The ordering data for this customer.")]
     private List<CustomerOrderingData> orderingData = new List<CustomerOrderingData>();
@@ -27,6 +35,8 @@ public class Customer : MonoBehaviour
     private bool ordering = false;
     private Vector3 targetPosition = Vector3.zero;
     private string desiredDrink = string.Empty;
+    private float t = 0;
+    private float baseY = 0;
 
     //Properties
     public bool GetIfCorrrectPosition => correctPosition;
@@ -38,23 +48,32 @@ public class Customer : MonoBehaviour
     void Start()
     {
         orderRenderer.sprite = null;
+        baseY = transform.position.y;
     }
 
     // Update is called once per frame
     void Update()
     {
         //Repositioning
-        if(!correctPosition)
+        if (!correctPosition)
         {
+            //Movement
             Vector3 dir = (targetPosition - transform.position).normalized;
             transform.position += dir * moveSpeed * Time.deltaTime; //Move with the move speed towards the target
-            if(Vector3.Distance(transform.position, targetPosition) < TARGET_REACHED_THRESHOLD) //If we are close enough to our target
+
+            //Bobbing
+            transform.position = new Vector3(transform.position.x, baseY + Mathf.Sin(t) * bobAmount);
+            t += Time.deltaTime * bobSpeed;
+
+            if (Vector3.Distance(transform.position, targetPosition) < TARGET_REACHED_THRESHOLD) //If we are close enough to our target
             {
                 transform.position = targetPosition; //Set the exact position
                 targetPosition = Vector3.zero;
                 correctPosition = true; //We have reached the target
             }
         }
+        else
+            t = 0;
     }
 
     public void Order()
