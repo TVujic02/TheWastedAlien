@@ -24,6 +24,8 @@ public class Drink : MonoBehaviour
     //Properties
     public string DrinkID { get => drinkID; set => drinkID = value; }
 
+    public Sprite GetDrinkSprite => GetComponent<SpriteRenderer>().sprite;
+
     // Start is called before the first frame update
     void Start()
     {

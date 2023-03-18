@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,7 @@ public class Customer : MonoBehaviour
     private float moveSpeed = 1f;
 
     [SerializeField]
+    [NonReorderable]
     [Tooltip("The ordering data for this customer.")]
     private List<CustomerOrderingData> orderingData = new List<CustomerOrderingData>();
 
@@ -62,15 +64,17 @@ public class Customer : MonoBehaviour
         {
             foreach (CustomerOrderingData data in orderingData)
             {
-                float r = Random.Range(0.0f, 1.0f);
+                float r = UnityEngine.Random.Range(0.0f, 1.0f);
                 if (r >= data.OrderRate) //If the check is succeded
                 {
                     desiredDrink = data.DesiredDrink;
+                    orderRenderer.sprite = data.DesiredDrink.GetDrinkSprite;
                     break;
                 }
                 else if(data == orderingData[orderingData.Count-1]) //If its the last data we want that drink to be ordered
                 {
                     desiredDrink = data.DesiredDrink;
+                    orderRenderer.sprite = data.DesiredDrink.GetDrinkSprite;
                 }
             }
         }
@@ -83,6 +87,7 @@ public class Customer : MonoBehaviour
             CustomerServed?.Invoke();
             ordering = false;
             desiredDrink = null;
+            orderRenderer.sprite = null;
             return true;
         }
         return false;
@@ -94,7 +99,7 @@ public class Customer : MonoBehaviour
         targetPosition = newPosition;
     }
 }
-
+[Serializable]
 public class CustomerOrderingData
 {
     [Tooltip("The drink that is wanted.")]
