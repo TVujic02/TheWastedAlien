@@ -34,6 +34,10 @@ public class DrinkMixer : MonoBehaviour, IUtensil
     [Tooltip("Reference to the drink show port.")]
     private DrinkShowPort drinkShowPort;
 
+    [SerializeField]
+    [Tooltip("Refrence to the Mixer Indicator.")]
+    private MixerIndicator mixerIndicator;
+
     //Private variable
     private List<Ingridient> storedIngridients = new List<Ingridient>();
     private Vector2 mousePosDifference = Vector2.zero;
@@ -48,6 +52,7 @@ public class DrinkMixer : MonoBehaviour, IUtensil
     {
         storedPos = transform.position;
         drinkShowPort.DrinkShowEnd.AddListener(OnShowEnded);
+        mixerIndicator.UpdateIndicator(storedIngridients); //Update indicator
     }
 
     // Update is called once per frame
@@ -110,6 +115,7 @@ public class DrinkMixer : MonoBehaviour, IUtensil
 
         //Store it in this class
         storedIngridients.Add(ingridient);
+        mixerIndicator.UpdateIndicator(storedIngridients); //Update indicator
     }
 
     private void Mix()
@@ -149,7 +155,7 @@ public class DrinkMixer : MonoBehaviour, IUtensil
         ReleaseIngridients();
     }
 
-    private void ReleaseIngridients()
+    public void ReleaseIngridients()
     {
         foreach (Ingridient ingridient in storedIngridients)
         {
@@ -157,6 +163,7 @@ public class DrinkMixer : MonoBehaviour, IUtensil
             ingridient.transform.SetParent(null);
         }
         storedIngridients.Clear(); //Remove all ingridients from the list
+        mixerIndicator.UpdateIndicator(storedIngridients); //Update indicator
     }
 
     private void OnShowEnded()

@@ -102,6 +102,7 @@ MonoBehaviour:
   ingridientID: AlienCrushed
   releaseForce: 500
   dropCheckRange: 1
+  ingridientSprite: {fileID: 21300000, guid: 7eb74e856de7ce24f9ab5a43938308e5, type: 3}
   Crushable: 0
   Cutable: 0
   Fryable: 0

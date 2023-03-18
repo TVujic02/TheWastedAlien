@@ -22,6 +22,10 @@ public class Ingridient : MonoBehaviour
     [Tooltip("The radius used to check for interactions when the obejct is dropped")]
     private float dropCheckRange = 1f;
 
+    [SerializeField]
+    [Tooltip("The sprite used for the mix indactor.")]
+    private Sprite ingridientSprite;
+
     [HideInInspector]
     public bool Crushable, Cutable, Fryable;
 
@@ -34,6 +38,7 @@ public class Ingridient : MonoBehaviour
     private Vector2 previousPos, storedPos;
 
     public string IngridientID { get => ingridientID; set => ingridientID = value; }
+    public Sprite GetIngridientSprite => ingridientSprite;
 
     // Start is called before the first frame update
     void Start()
