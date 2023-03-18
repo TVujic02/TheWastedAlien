@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -15,11 +16,19 @@ public class Customer : MonoBehaviour
 
     [SerializeField]
     [Tooltip("The amount that the customer bobs when walking.")]
-    private float bobAmount = 0.1f;
+    private float walkBobAmount = 0.1f;
 
     [SerializeField]
     [Tooltip("The speed at wich the customer bobs up and down.")]
-    private float bobSpeed = 3f;
+    private float walkBobSpeed = 3f;
+
+    [SerializeField]
+    [Tooltip("The amount that the customer bobs when walking.")]
+    private float idleBobAmount = 0.05f;
+
+    [SerializeField]
+    [Tooltip("The speed at wich the customer bobs up and down.")]
+    private float idleBobSpeed = 3f;
 
     [SerializeField]
     [NonReorderable]
@@ -35,7 +44,7 @@ public class Customer : MonoBehaviour
     private bool ordering = false;
     private Vector3 targetPosition = Vector3.zero;
     private string desiredDrink = string.Empty;
-    private float t = 0;
+    private float bobPos = 0;
     private float baseY = 0;
 
     //Properties
@@ -62,8 +71,8 @@ public class Customer : MonoBehaviour
             transform.position += dir * moveSpeed * Time.deltaTime; //Move with the move speed towards the target
 
             //Bobbing
-            transform.position = new Vector3(transform.position.x, baseY + Mathf.Sin(t) * bobAmount);
-            t += Time.deltaTime * bobSpeed;
+            transform.position = new Vector3(transform.position.x, baseY + Mathf.Sin(bobPos) * walkBobAmount);
+            bobPos += Time.deltaTime * walkBobSpeed;
 
             if (Vector3.Distance(transform.position, targetPosition) < TARGET_REACHED_THRESHOLD) //If we are close enough to our target
             {
@@ -72,8 +81,13 @@ public class Customer : MonoBehaviour
                 correctPosition = true; //We have reached the target
             }
         }
-        else
-            t = 0;
+
+        //Idle bob
+        if(correctPosition)
+        {
+            transform.position = new Vector3(transform.position.x, baseY + Mathf.Sin(bobPos) * idleBobAmount);
+            bobPos += Time.deltaTime * idleBobSpeed;
+        }
     }
 
     public void Order()
