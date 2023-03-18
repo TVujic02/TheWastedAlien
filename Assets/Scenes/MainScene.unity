@@ -1550,6 +1550,7 @@ GameObject:
   - component: {fileID: 1010811876}
   - component: {fileID: 1010811878}
   - component: {fileID: 1010811877}
+  - component: {fileID: 1010811879}
   m_Layer: 0
   m_Name: Sunburst
   m_TagString: Untagged
@@ -1584,7 +1585,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d41fd9420db6674db648d97ccd8fe72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 25
+  rotationSpeed: 30
 --- !u!212 &1010811878
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1627,7 +1628,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 100
   m_Sprite: {fileID: 21300000, guid: e101f37df7cc8b44cb5973bbca6067a5, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9182595, g: 0.9811321, b: 0.22677112, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1637,6 +1638,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1010811879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1010811875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cf7e5ae5bf790d47bc2562e5c2277f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lerpTime: 0.499
+  myColors:
+  - {r: 1, g: 0.25943398, b: 0.25943398, a: 1}
+  - {r: 1, g: 0.2216981, b: 0.7715462, a: 1}
+  - {r: 0.5192987, g: 0.13679248, b: 1, a: 1}
+  - {r: 0.1462264, g: 0.18243058, b: 1, a: 1}
+  - {r: 0, g: 0.47010005, b: 0.6981132, a: 1}
+  - {r: 0.062745094, g: 1, b: 0.14281693, a: 1}
 --- !u!1 &1050883450
 GameObject:
   m_ObjectHideFlags: 0
