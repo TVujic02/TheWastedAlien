@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class DrinkStand : MonoBehaviour
 {
+    //Constants
+    private const float ORGANISE_SPEED = 1.5f;
+
     [SerializeField]
     [Tooltip("The max amount of drinks that fit on the stand.")]
     private int maxDrinks = 3;
@@ -15,10 +18,6 @@ public class DrinkStand : MonoBehaviour
     [SerializeField]
     [Tooltip("Reference to the point where the drink row starts.")]
     private Transform drinkStandStart;
-
-    [SerializeField]
-    [Tooltip("The speed at wich the drink reorganise after a new drink has been added.")]
-    private float organiseSpeed = 1f;
 
     [SerializeField]
     [Tooltip("Reference to the drinkdelivered port.")]
@@ -45,13 +44,17 @@ public class DrinkStand : MonoBehaviour
             GameObject drink = null;
             Vector3 endPos = Vector3.zero;
 
-            t += Time.deltaTime * organiseSpeed; //Increase with time
+            t += Time.deltaTime * ORGANISE_SPEED; //Increase with time
 
             //If t is more than one we can stop lerping
-            if (t > 1)
+            if (t >= 1)
             {
                 organiseLerp = false;
                 t = 0; //Reset t
+                for(int i = 0; i < drinkRow.Count; i++)
+                {
+                    drinkStartPositions[i] = drinkRow[i].transform.position; //Set start positions
+                }
             }
             else
             {
@@ -67,14 +70,19 @@ public class DrinkStand : MonoBehaviour
         }
     }
 
-    public void AddDrink(GameObject drink)
+    public bool TryAddDrink(GameObject drink)
     {
+        if (drinkRow.Count >= maxDrinks)
+            return false;
         drinkRow.Add(drink);
         drink.transform.position = drinkStandStart.position + (Vector3.right * (drinkRow.Count - 1) * drinkDistance); //Position it last in the row
+        drinkStartPositions.Add(drink.transform.position);
+        return true;
     }
 
     private void RemoveDrink(GameObject drink)
     {
+        drinkStartPositions.RemoveAt(drinkRow.IndexOf(drink));
         drinkRow.Remove(drink);
         OrganiseDrinks();
     }

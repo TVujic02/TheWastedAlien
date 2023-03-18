@@ -69,6 +69,8 @@ public class Fridge : MonoBehaviour
                 ingridientSets[i].SetActive(false); //Deactivate the rest
             }
         }
+        if(index > 0)
+            currentSet = index;
     }
 
     public void SpawnIngridient(GameObject ingridient)

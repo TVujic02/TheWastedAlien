@@ -115,12 +115,20 @@ public class DrinkMixer : MonoBehaviour, IUtensil
             if(recipe.CompareIngridients(storedIngridients, out result)) //Returns true if we matched the recipe
             {
                 GameObject instance = Instantiate(result, transform.position, transform.rotation); //Instatiate the drink created by the recipe
-                drinkStand.AddDrink(instance); //Add it to the stand
-                foreach(Ingridient ingridient in storedIngridients) //Remove stored ingridients
+                bool addedDrink = drinkStand.TryAddDrink(instance); //Add it to the stand
+                if (addedDrink) //If there was enough space on the stand
                 {
-                    Destroy(ingridient.gameObject);
+                    foreach (Ingridient ingridient in storedIngridients) //Remove stored ingridients
+                    {
+                        Destroy(ingridient.gameObject);
+                    }
+                    storedIngridients.Clear();
                 }
-                storedIngridients.Clear();
+                else //If there wasnt enough space on the stand
+                {
+                    Destroy(instance);
+                    ReleaseIngridients();
+                }
                 return; //Exit out of the function
             }
         }
