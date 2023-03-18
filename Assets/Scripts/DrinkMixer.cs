@@ -135,6 +135,7 @@ public class DrinkMixer : MonoBehaviour, IUtensil
 
                     drinkShowPort.DrinkShowStart?.Invoke(instance);
                     storedDrink = instance; //Store the drink
+                    storedDrink.SetActive(false);
                 }
                 else //If there wasnt enough space on the stand
                 {
@@ -160,6 +161,7 @@ public class DrinkMixer : MonoBehaviour, IUtensil
 
     private void OnShowEnded()
     {
+        storedDrink.SetActive(true);
         drinkStand.AddDrink(storedDrink);
         storedDrink = null;
     }
