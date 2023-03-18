@@ -43,8 +43,9 @@ public class CustomerHandler : MonoBehaviour
     private List<Customer> customerExitBuffer = new List<Customer>();
     private float spawnTimer = 0;
     private int customersSpawned = 0;
+
+    //Flags
     private bool repositioning = false;
-    private float t = 0;
     private bool routineRunning = false;
     private bool firstRepositioning = false;
 
@@ -121,7 +122,7 @@ public class CustomerHandler : MonoBehaviour
                 {
                     GameObject obj = Instantiate(data.customerPrefab, customerSpawnPoint.position, Quaternion.identity); //Spawn at spawnPoint
                     Customer newCustomer = obj.GetComponent<Customer>();
-                    if (customers.Count == 0) firstRepositioning = true;
+                    if (customers.Count == 0) firstRepositioning = true; //Is this new customer the first one in queue
                     customers.Enqueue(newCustomer); //Add it to the queue
                     newCustomer.CustomerServed.AddListener(OnCustomerServed);
                     newCustomer.Reposition(customerOrderingPoint.position + (Vector3.left * distanceBetweenCustomers * (customers.Count - 1))); //Reposition it from the spawnpoint to the correct position
