@@ -52,7 +52,7 @@ public class DrinkShow : MonoBehaviour
     void Update()
     {
         //Fade back out
-        if(Input.GetKeyDown(KeyCode.Return) && !fadingIn)
+        if(Input.GetMouseButtonDown(0) && !fadingIn)
         {
             fadingOut = true;
             fade = 1;
