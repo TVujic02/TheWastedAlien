@@ -405,13 +405,24 @@ MonoBehaviour:
   orderingData:
   - DesiredDrink: {fileID: 8501565638140027106, guid: 88442aaf7cea00847ae5a77c7cbefc22, type: 3}
     OrderRate: 0.5
-    OrderText: Hello! A Lunar Longtower please.
+    OrderText:
+    - Hi! Can I get one Lunar Longtower please?
+    - May I please have one Lunar Longtower?
   - DesiredDrink: {fileID: 8501565638140027106, guid: 14829ecf79636e74c8b37268bc2a067f, type: 3}
     OrderRate: 0.3
-    OrderText: The alien drink please!
+    OrderText:
+    - Hello! Can i get that alien drink please?
+    - I think i need something spicy. One Extra Terrestrial!
   - DesiredDrink: {fileID: 8501565638140027106, guid: 870c3f4961d4c7c4b921b057189e3e82, type: 3}
-    OrderRate: 0.2
-    OrderText: One Leika's Special!
+    OrderRate: 0.1
+    OrderText:
+    - One Laika's Special please!
+    - Hi! Can I have a Laikai's Special?
+  - DesiredDrink: {fileID: 8501565638140027106, guid: d0ab6e7d1f8e16f48baf7b22c43254c4, type: 3}
+    OrderRate: 0.1
+    OrderText:
+    - One Planetary Plunge please!
+    - Hi! May I have one Planetary Plunge?
   orderText: {fileID: 3792237582023453510}
   chatBubbleRenderer: {fileID: 5841806062622520239}
   fadeSpeed: 1

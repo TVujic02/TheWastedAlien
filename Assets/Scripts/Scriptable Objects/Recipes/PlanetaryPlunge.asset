@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02574db843a35064cabc857caca3a010, type: 3}
+  m_Name: PlanetaryPlunge
+  m_EditorClassIdentifier: 
+  ingridients:
+  - {fileID: 3318476293936530392, guid: d3de42f64ddce71449e831fe9c015f36, type: 3}
+  - {fileID: 2176299698094989353, guid: fc14f8154d7fac049a89682b4a213517, type: 3}
+  - {fileID: 2176299698094989353, guid: 71392b1b17dff3842b5150502debf25c, type: 3}
+  - {fileID: 2176299698094989353, guid: 5447293ec18560a46a9c44c0125dbee8, type: 3}
+  resultDrink: {fileID: 8501565638140027105, guid: 88442aaf7cea00847ae5a77c7cbefc22, type: 3}
