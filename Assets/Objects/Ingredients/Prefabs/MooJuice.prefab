@@ -101,7 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ingridientID: MooJuice
   releaseForce: 500
-  dropCheckRange: 1
+  dropCheckRange: 0.1
   ingridientSprite: {fileID: 21300000, guid: 4d801dd87f0c89a49a96bb1ecf28034d, type: 3}
   Crushable: 1
   Cutable: 0

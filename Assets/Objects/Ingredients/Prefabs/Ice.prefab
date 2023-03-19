@@ -101,7 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ingridientID: Ice
   releaseForce: 500
-  dropCheckRange: 1
+  dropCheckRange: 0.1
   ingridientSprite: {fileID: 21300000, guid: 532f56a5091cf944bb7fc8c7eaad7994, type: 3}
   Crushable: 1
   Cutable: 0

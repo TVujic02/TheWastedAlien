@@ -101,7 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ingridientID: Stars
   releaseForce: 500
-  dropCheckRange: 1
+  dropCheckRange: 0.1
   ingridientSprite: {fileID: 21300000, guid: 879cb0a7175f5ab469b58a1544b7a311, type: 3}
   Crushable: 1
   Cutable: 0

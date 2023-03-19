@@ -103,7 +103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ingridientID: AlienHead
   releaseForce: 500
-  dropCheckRange: 1
+  dropCheckRange: 0.1
   ingridientSprite: {fileID: 21300000, guid: 0720dbf14d9590f4cb0c4e481541f385, type: 3}
   Crushable: 0
   Cutable: 0

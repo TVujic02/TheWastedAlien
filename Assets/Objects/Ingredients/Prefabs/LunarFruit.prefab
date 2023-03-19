@@ -102,14 +102,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ingridientID: LunarFruit
   releaseForce: 500
-  dropCheckRange: 1
+  dropCheckRange: 0.1
   ingridientSprite: {fileID: 21300000, guid: 642fbfa015f593c4687bbe20a469b254, type: 3}
   Crushable: 1
-  Cutable: 0
-  Fryable: 0
+  Cutable: 1
+  Fryable: 1
   CrushResult: {fileID: 2176299698094989397, guid: bcba7194473456f479dabe2fbddfbf95, type: 3}
-  CutResult: {fileID: 0}
-  FryResult: {fileID: 4665853875902414866, guid: 79b94194cfd546647a283844c57b10a3, type: 3}
+  CutResult: {fileID: 2176299698094989397, guid: 71392b1b17dff3842b5150502debf25c, type: 3}
+  FryResult: {fileID: 2176299698094989397, guid: fc14f8154d7fac049a89682b4a213517, type: 3}
 --- !u!50 &2176299698094989398
 Rigidbody2D:
   serializedVersion: 4
