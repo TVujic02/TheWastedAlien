@@ -14483,9 +14483,11 @@ MonoBehaviour:
   spawnTimeRange: {x: 5, y: 10}
   customerSpawnRateDatas:
   - customerPrefab: {fileID: 7107552791347746416, guid: d59129c73813eb046b4de0c65f344a2e, type: 3}
-    BaseRate: 0.5
+    BaseRate: 0.4
   - customerPrefab: {fileID: 8460232591279121542, guid: 22ee2445feea8f447b4ff5d03ff53211, type: 3}
-    BaseRate: 0.5
+    BaseRate: 0.3
+  - customerPrefab: {fileID: 8460232591279121542, guid: e0adc4f99b8bd614cba9dfe3ca8699ec, type: 3}
+    BaseRate: 0.3
 --- !u!1 &1972931203
 GameObject:
   m_ObjectHideFlags: 0

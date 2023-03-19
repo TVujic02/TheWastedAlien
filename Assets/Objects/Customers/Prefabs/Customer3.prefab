@@ -311,7 +311,7 @@ GameObject:
   - component: {fileID: -529969872495398041}
   - component: {fileID: -9061814185501671909}
   m_Layer: 0
-  m_Name: Customer2
+  m_Name: Customer3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -374,7 +374,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -200
-  m_Sprite: {fileID: 21300000, guid: d3a6090e874d29f479b15b450b0f9f5e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8496b86a4bd2edf4c95f89c3f78cc8ae, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -403,9 +403,12 @@ MonoBehaviour:
   idleBobAmount: 0.1
   idleBobSpeed: 3
   orderingData:
-  - DesiredDrink: {fileID: 8501565638140027106, guid: 466a5a4a7bf0be74bbe1053fa42d04f1, type: 3}
-    OrderRate: 1
-    OrderText: Hey Man! A Cosmic Fizz pls!
+  - DesiredDrink: {fileID: 8501565638140027106, guid: 88442aaf7cea00847ae5a77c7cbefc22, type: 3}
+    OrderRate: 0.7
+    OrderText: Hi there! A Lunar Longtower please.
+  - DesiredDrink: {fileID: 8501565638140027106, guid: 870c3f4961d4c7c4b921b057189e3e82, type: 3}
+    OrderRate: 0.3
+    OrderText: Laika's Special!!!!
   orderText: {fileID: 3792237582023453510}
   chatBubbleRenderer: {fileID: 5841806062622520239}
   fadeSpeed: 1
