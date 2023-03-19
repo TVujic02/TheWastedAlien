@@ -168,6 +168,7 @@ public class Customer : MonoBehaviour
             CustomerServed?.Invoke();
             ordering = false;
             fadingOut = true;
+            fadingIn = false;
             desiredDrink = string.Empty;
             return true;
         }
