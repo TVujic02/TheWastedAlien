@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Events;
+using TMPro;
 
 public class Customer : MonoBehaviour
 {
@@ -36,8 +37,16 @@ public class Customer : MonoBehaviour
     private List<CustomerOrderingData> orderingData = new List<CustomerOrderingData>();
 
     [SerializeField]
-    [Tooltip("The sprite renderer for the drink order.")]
-    private SpriteRenderer orderRenderer;
+    [Tooltip("The text object used to order the drink.")]
+    private TextMeshProUGUI orderText;
+
+    [SerializeField]
+    [Tooltip("The sprite renderer of the chat bubble.")]
+    private SpriteRenderer chatBubbleRenderer;
+
+    [SerializeField]
+    [Tooltip("The speed that the bubble fades.")]
+    private float fadeSpeed = 1f;
 
     //Private variables
     private bool correctPosition = false;
@@ -46,6 +55,9 @@ public class Customer : MonoBehaviour
     private string desiredDrink = string.Empty;
     private float bobPos = 0;
     private float baseY = 0;
+    private float fade = 0;
+    private bool fading = false;
+    private int fadingDir = 1;
 
     //Properties
     public bool GetIfCorrrectPosition => correctPosition;
@@ -56,8 +68,10 @@ public class Customer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        orderRenderer.sprite = null;
+        orderText.text = string.Empty;
         baseY = transform.position.y;
+        chatBubbleRenderer.color = new Color(chatBubbleRenderer.color.r, chatBubbleRenderer.color.g, chatBubbleRenderer.color.b, fade);
+        orderText.alpha = fade;
     }
 
     // Update is called once per frame
@@ -88,6 +102,37 @@ public class Customer : MonoBehaviour
             transform.position = new Vector3(transform.position.x, baseY + Mathf.Sin(bobPos) * idleBobAmount);
             bobPos += Time.deltaTime * idleBobSpeed;
         }
+
+        //Fading chat bubble
+        if(fading)
+        {
+            if(fade >= 1)
+            {
+                fade = 1;
+                fadingDir *= -1;
+                fading = false;
+            }
+            else if(fade <= 0)
+            {
+                fade = 0;
+                fadingDir *= -1;
+                fading = false;
+                orderText.text = string.Empty;
+            }
+            else
+            {
+                if (fadingDir == 1)
+                {
+                    fade += Time.deltaTime * fadeSpeed;
+                }
+                else if(fadingDir == -1)
+                {
+                    fade -= Time.deltaTime * fadeSpeed;
+                }
+                chatBubbleRenderer.color = new Color(chatBubbleRenderer.color.r, chatBubbleRenderer.color.g, chatBubbleRenderer.color.b, fade);
+                orderText.alpha = fade;
+            }
+        }
     }
 
     public void Order()
@@ -101,13 +146,15 @@ public class Customer : MonoBehaviour
                 if (r <= data.OrderRate) //If the check is succeded
                 {
                     desiredDrink = data.DesiredDrink.DrinkID;
-                    orderRenderer.sprite = data.DesiredDrink.GetDrinkSprite;
+                    orderText.text = data.OrderText;
+                    fading = true;
                     break;
                 }
                 else if(data == orderingData[orderingData.Count-1]) //If its the last data we want that drink to be ordered
                 {
                     desiredDrink = data.DesiredDrink.DrinkID;
-                    orderRenderer.sprite = data.DesiredDrink.GetDrinkSprite;
+                    orderText.text = data.OrderText;
+                    fading = true;
                 }
             }
         }
@@ -119,8 +166,8 @@ public class Customer : MonoBehaviour
         {
             CustomerServed?.Invoke();
             ordering = false;
+            fading = true;
             desiredDrink = string.Empty;
-            orderRenderer.sprite = null;
             return true;
         }
         return false;
@@ -141,4 +188,7 @@ public class CustomerOrderingData
     [Range(0.0f,1.0f)]
     [Tooltip("The chance that this customer will order that drink.")]
     public float OrderRate = 0.5f;
+
+    [Tooltip("The string that is shown when the customer.")]
+    public string OrderText = string.Empty;
 }
