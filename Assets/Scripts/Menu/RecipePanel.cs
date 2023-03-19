@@ -34,7 +34,11 @@ public class RecipePanel : MonoBehaviour
 
     public void ActivatePanel()
     {
-        gameObject.SetActive(true);
+        if(gameObject.activeSelf)
+            gameObject.SetActive(false);
+        else
+            gameObject.SetActive(true);
+        HideRecipe();
     }
 
     public void ShowRecipe(int index)

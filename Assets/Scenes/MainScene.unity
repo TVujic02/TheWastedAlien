@@ -14478,20 +14478,14 @@ MonoBehaviour:
   customerSpawnPoint: {fileID: 874161837}
   customerOrderingPoint: {fileID: 2110828270}
   customerExitPoint: {fileID: 1634620059}
-  distanceBetweenCustomers: 3
-  maxCustomers: 5
-  spawnTimeRange: {x: 1, y: 3}
+  distanceBetweenCustomers: 4
+  maxCustomers: 3
+  spawnTimeRange: {x: 5, y: 10}
   customerSpawnRateDatas:
   - customerPrefab: {fileID: 7107552791347746416, guid: d59129c73813eb046b4de0c65f344a2e, type: 3}
     BaseRate: 0.5
-    BaseRange: {x: 0, y: 100}
-    ModifiedRate: 0
-    ModifiedRange: {x: 0, y: 0}
   - customerPrefab: {fileID: 8460232591279121542, guid: 22ee2445feea8f447b4ff5d03ff53211, type: 3}
     BaseRate: 0.5
-    BaseRange: {x: 0, y: 100}
-    ModifiedRate: 0
-    ModifiedRange: {x: 0, y: 0}
 --- !u!1 &1972931203
 GameObject:
   m_ObjectHideFlags: 0

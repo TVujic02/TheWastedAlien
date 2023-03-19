@@ -115,21 +115,18 @@ public class CustomerHandler : MonoBehaviour
     {
         foreach(CustomerSpawnRateData data in customerSpawnRateDatas)
         {
-            if (customersSpawned >= data.BaseRange.x && customersSpawned < data.BaseRange.y) //If the customer count is within the base range
+            float r = UnityEngine.Random.Range(0.0f, 1.0f); //Get a random float used to detirmine if this customer should be spawned
+            if (r <= data.BaseRate || data == customerSpawnRateDatas[customerSpawnRateDatas.Count - 1]) //If we succeded the check or if its the last data
             {
-                float r = UnityEngine.Random.Range(0.0f, 1.0f); //Get a random float used to detirmine if this customer should be spawned
-                if (r <= data.BaseRate || data == customerSpawnRateDatas[customerSpawnRateDatas.Count-1]) //If we succeded the check or if its the last data
-                {
-                    GameObject obj = Instantiate(data.customerPrefab, customerSpawnPoint.position, Quaternion.identity); //Spawn at spawnPoint
-                    Customer newCustomer = obj.GetComponent<Customer>();
-                    if (customers.Count == 0) firstRepositioning = true; //Is this new customer the first one in queue
-                    customers.Enqueue(newCustomer); //Add it to the queue
-                    newCustomer.CustomerServed.AddListener(OnCustomerServed);
-                    newCustomer.Reposition(customerOrderingPoint.position + (Vector3.left * distanceBetweenCustomers * (customers.Count - 1))); //Reposition it from the spawnpoint to the correct position
-                    repositioning = true;
-                    customersSpawned++; //Increase counter
-                    break;
-                }
+                GameObject obj = Instantiate(data.customerPrefab, customerSpawnPoint.position, Quaternion.identity); //Spawn at spawnPoint
+                Customer newCustomer = obj.GetComponent<Customer>();
+                if (customers.Count == 0) firstRepositioning = true; //Is this new customer the first one in queue
+                customers.Enqueue(newCustomer); //Add it to the queue
+                newCustomer.CustomerServed.AddListener(OnCustomerServed);
+                newCustomer.Reposition(customerOrderingPoint.position + (Vector3.left * distanceBetweenCustomers * (customers.Count - 1))); //Reposition it from the spawnpoint to the correct position
+                repositioning = true;
+                customersSpawned++; //Increase counter
+                break;
             }
         }
     }
@@ -175,7 +172,7 @@ public class CustomerSpawnRateData
     [Range(0.0f, 1.0f)]
     [Tooltip("The base spawnrate for this customer.")]
     public float BaseRate = 0.5f;
-
+     /*
     [Tooltip("The interval where only the BaseSpawnRate is used.")]
     public Vector2Int BaseRange = Vector2Int.zero;
 
@@ -185,5 +182,6 @@ public class CustomerSpawnRateData
     public float ModifiedRate = 1.0f;
 
     [Tooltip("The interval where the base spawnrate is modified towards the modified spawnrate (on max it has reached the full modification).")]
-    public Vector2Int ModifiedRange = Vector2Int.zero; 
+    public Vector2Int ModifiedRange = Vector2Int.zero;
+     */
 }
