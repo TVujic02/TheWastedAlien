@@ -102,7 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   walkBobAmount: 0.1
-  walkBobSpeed: 3
+  walkBobSpeed: 10
   idleBobAmount: 0.05
   idleBobSpeed: 3
   orderingData:

@@ -185,8 +185,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  bobAmount: 0.1
-  bobSpeed: 10
+  walkBobAmount: 0.1
+  walkBobSpeed: 10
+  idleBobAmount: 0.1
+  idleBobSpeed: 3
   orderingData:
   - DesiredDrink: {fileID: 8501565638140027106, guid: 466a5a4a7bf0be74bbe1053fa42d04f1, type: 3}
     OrderRate: 1
