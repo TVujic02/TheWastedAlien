@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02574db843a35064cabc857caca3a010, type: 3}
+  m_Name: ExtraTerrestrial
+  m_EditorClassIdentifier: 
+  ingridients:
+  - {fileID: 2176299698094989353, guid: 77f809a00762b214a83bb2ab06cefbdc, type: 3}
+  - {fileID: 4665853875902414878, guid: ea9fe49c4e7c83645a336d1a08dbcc4a, type: 3}
+  - {fileID: 4665853875902414878, guid: 596cd9a4bea688e4cb0b0ab3cb5eb8fb, type: 3}
+  - {fileID: 4665853875902414878, guid: 51ade90970ef24e409f745d03bebfe88, type: 3}
+  - {fileID: 4665853875902414878, guid: b343d529e791ad646a427b5d53627df5, type: 3}
+  - {fileID: 3318476293936530392, guid: d3de42f64ddce71449e831fe9c015f36, type: 3}
+  resultDrink: {fileID: 8501565638140027105, guid: 14829ecf79636e74c8b37268bc2a067f, type: 3}
