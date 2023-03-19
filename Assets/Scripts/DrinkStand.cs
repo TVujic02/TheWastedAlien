@@ -40,6 +40,10 @@ public class DrinkStand : MonoBehaviour
     {
         drinkDeliveredPort.DrinkDestroyed.AddListener(RemoveDrink);
     }
+    private void OnDestroy()
+    {
+        drinkDeliveredPort.DrinkDestroyed.RemoveListener(RemoveDrink);
+    }
 
     // Update is called once per frame
     void Update()

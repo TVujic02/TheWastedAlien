@@ -137,9 +137,11 @@ public class CustomerHandler : MonoBehaviour
         Customer servedCustomer = customers.Dequeue(); //Dequeue the customer
         servedCustomer.Reposition(customerExitPoint.position); //Position it towards the exit
         customerExitBuffer.Add(servedCustomer); //Add it to the buffer so we can remove it when it has reached the exit point
-
-        StartCoroutine("RepositioningRoutine");
-        routineRunning = true;
+        if (customers.Count != 0)
+        {
+            StartCoroutine("RepositioningRoutine");
+            routineRunning = true;
+        }
     }
 
     private IEnumerator RepositioningRoutine()
