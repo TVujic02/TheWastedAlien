@@ -178,8 +178,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 1
-  m_fontSizeBase: 1
+  m_fontSize: 0.7
+  m_fontSizeBase: 0.7
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -405,13 +405,13 @@ MonoBehaviour:
   orderingData:
   - DesiredDrink: {fileID: 8501565638140027106, guid: 466a5a4a7bf0be74bbe1053fa42d04f1, type: 3}
     OrderRate: 0.2
-    OrderText: Cosmic Fizz please
+    OrderText: Hiii! Im feeling Fizzy today!
   - DesiredDrink: {fileID: 8501565638140027106, guid: 88442aaf7cea00847ae5a77c7cbefc22, type: 3}
     OrderRate: 0.6
-    OrderText: Lunar Longtower!
+    OrderText: Hey gorl! You know its tower time tonight!
   - DesiredDrink: {fileID: 8501565638140027106, guid: 870c3f4961d4c7c4b921b057189e3e82, type: 3}
     OrderRate: 0.2
-    OrderText: Laikas Special!
+    OrderText: Oooh gurl! Im feeling some Laikas Special!
   orderText: {fileID: 1254582655636473159}
   chatBubbleRenderer: {fileID: 7737246502786217879}
   fadeSpeed: 1
