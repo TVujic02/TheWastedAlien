@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1870614141}
   - component: {fileID: 1870614140}
   m_Layer: 0
-  m_Name: LunarLongtower
+  m_Name: MurkyWater
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3e4de14be793d824b9bfed0907d08838, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b2389fbe1aac41b4abc6c8ecab0720a4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -99,12 +99,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e02c3881ecbe5704e871f4c4673b7c2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drinkID: LunarLongtower
-  drinkDescription: A classic here at The Wasted Alien! A favorite among many intergalactic
-    friends.
+  drinkID: MurkyWater
+  drinkDescription: What is this... looks like something that humans would drink...
+    Maybe try something else?
   dropCheckRange: 1
   drinkDestroyedPort: {fileID: 11400000, guid: 9e639c80e267f4f49b0ba015b638ed63, type: 2}
-  drinkSprite: {fileID: 21300000, guid: 3e4de14be793d824b9bfed0907d08838, type: 3}
+  drinkSprite: {fileID: 21300000, guid: b2389fbe1aac41b4abc6c8ecab0720a4, type: 3}
 --- !u!50 &1870614141
 Rigidbody2D:
   serializedVersion: 4
@@ -139,16 +139,16 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.022748888, y: -0.084944546}
+  m_Offset: {x: 0.016333342, y: -0.02125734}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.7066667, y: 1.7066667}
+    oldSize: {x: 1.4628571, y: 1.4628571}
     newSize: {x: 10.24, y: 10.24}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.628857, y: 1.4382707}
+  m_Size: {x: 0.97523785, y: 1.1569566}
   m_EdgeRadius: 0
