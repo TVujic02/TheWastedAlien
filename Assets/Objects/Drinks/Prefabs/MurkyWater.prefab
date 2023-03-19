@@ -158,8 +158,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drinkID: MurkyWater
-  drinkDescription: What is this... looks like something that humans would drink...
-    Maybe try something else?
+  drinkDescription: What... looks like something that humans would drink... Maybe
+    try something else?
   dropCheckRange: 1
   drinkDestroyedPort: {fileID: 11400000, guid: 9e639c80e267f4f49b0ba015b638ed63, type: 2}
   drinkSprite: {fileID: 21300000, guid: b2389fbe1aac41b4abc6c8ecab0720a4, type: 3}
