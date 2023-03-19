@@ -29,6 +29,7 @@ public class Drink : MonoBehaviour
     //Private variables
     private Vector2 mousePosDifference = Vector2.zero;
     private Vector3 startPos = Vector3.zero;
+    private bool isDragging = false;
 
     //Properties
     public string DrinkID { get => drinkID; set => drinkID = value; }
@@ -51,9 +52,13 @@ public class Drink : MonoBehaviour
 
     private void OnMouseDown()
     {
-        //Get the difference
-        mousePosDifference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-        startPos = transform.position;
+        if(!isDragging)
+        {
+            //Get the difference
+            mousePosDifference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+            startPos = transform.position;
+            isDragging = true;
+        }
     }
     private void OnMouseDrag()
     {
@@ -96,5 +101,6 @@ public class Drink : MonoBehaviour
 
         //Reset the position
         transform.position = startPos;
+        isDragging = false;
     }
 }
