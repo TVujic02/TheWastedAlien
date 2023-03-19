@@ -4,9 +4,20 @@ using UnityEngine;
 
 public class MusicManager : MonoBehaviour
 {
-    [SerializeField] AudioSource audioSource;
+    private AudioSource audioSource;
+
+    private static MusicManager instance;
+
     void Awake()
     {
+        if(instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
         DontDestroyOnLoad(transform.gameObject);
         audioSource = GetComponent<AudioSource>();
         //audioSource.Play();

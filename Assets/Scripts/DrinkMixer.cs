@@ -32,6 +32,10 @@ public class DrinkMixer : MonoBehaviour, IUtensil
     [Tooltip("The different recipes that ur able to make with this mixer.")]
     private List<Recipe> recipes = new List<Recipe>();
 
+    [SerializeField]
+    [Tooltip("The drink that is made if there is no matching recipe.")]
+    private GameObject defaultDrink;
+
     [Header("References")]
     [SerializeField]
     [Tooltip("Reference to the drink stand.")]
@@ -154,12 +158,14 @@ public class DrinkMixer : MonoBehaviour, IUtensil
             return;
 
         GameObject result = null;
-        foreach(Recipe recipe in recipes)
+        GameObject instance = null;
+        bool canAddDrink = false;
+        foreach (Recipe recipe in recipes)
         {
             if(recipe.CompareIngridients(storedIngridients, out result)) //Returns true if we matched the recipe
             {
-                GameObject instance = Instantiate(result, transform.position, transform.rotation); //Instatiate the drink created by the recipe
-                bool canAddDrink = drinkStand.CanAddDrink; //See if we can add the drink
+                instance = Instantiate(result, transform.position, transform.rotation); //Instatiate the drink created by the recipe
+                canAddDrink = drinkStand.CanAddDrink; //See if we can add the drink
                 if (canAddDrink) //If there was enough space on the stand
                 {
                     foreach (Ingridient ingridient in storedIngridients) //Remove stored ingridients
@@ -181,8 +187,27 @@ public class DrinkMixer : MonoBehaviour, IUtensil
                 return; //Exit out of the function
             }
         }
-        //If we havent exited yet there was no matching recipes
-        ReleaseIngridients();
+        //If we havent exited yet there was no matching recipes so we should create the default drink
+        instance = Instantiate(defaultDrink, transform.position, transform.rotation); //Instatiate the drink created by the recipe
+        canAddDrink = drinkStand.CanAddDrink; //See if we can add the drink
+        if (canAddDrink) //If there was enough space on the stand
+        {
+            foreach (Ingridient ingridient in storedIngridients) //Remove stored ingridients
+            {
+                Destroy(ingridient.gameObject);
+            }
+            storedIngridients.Clear();
+            mixerIndicator.UpdateIndicator(storedIngridients); //Update indicator
+
+            drinkShowPort.DrinkShowStart?.Invoke(instance);
+            storedDrink = instance; //Store the drink
+            storedDrink.SetActive(false);
+        }
+        else //If there wasnt enough space on the stand
+        {
+            Destroy(instance);
+            ReleaseIngridients();
+        }
     }
 
     public void ReleaseIngridients()
