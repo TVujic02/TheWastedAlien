@@ -405,13 +405,20 @@ MonoBehaviour:
   orderingData:
   - DesiredDrink: {fileID: 8501565638140027106, guid: 466a5a4a7bf0be74bbe1053fa42d04f1, type: 3}
     OrderRate: 0.2
-    OrderText: Hiii! Im feeling Fizzy today!
+    OrderText:
+    - Hii! Im feeling fizzy today!
+    - Im back on my diet gonna something light and fizzy!
+    - I need some of that cosmic bubble!
   - DesiredDrink: {fileID: 8501565638140027106, guid: 88442aaf7cea00847ae5a77c7cbefc22, type: 3}
     OrderRate: 0.6
-    OrderText: Hey gorl! You know its tower time tonight!
+    OrderText:
+    - Hey gorl! You know its tower time tonight!
+    - A girl needs her lunar refreshment!
   - DesiredDrink: {fileID: 8501565638140027106, guid: 870c3f4961d4c7c4b921b057189e3e82, type: 3}
     OrderRate: 0.2
-    OrderText: Oooh gurl! Im feeling some Laikas Special!
+    OrderText:
+    - Oooh gurl! Im feeling some Laika's Special!
+    - You know what? Laika knew her stuff!
   orderText: {fileID: 1254582655636473159}
   chatBubbleRenderer: {fileID: 7737246502786217879}
   fadeSpeed: 1

@@ -405,7 +405,10 @@ MonoBehaviour:
   orderingData:
   - DesiredDrink: {fileID: 8501565638140027106, guid: 466a5a4a7bf0be74bbe1053fa42d04f1, type: 3}
     OrderRate: 1
-    OrderText: Hey Man! A Cosmic Fizz pls!
+    OrderText:
+    - Hey man! Can I get one cosmic fizz?
+    - Yo brah! You got some of that fizz for me?
+    - WAZZZAAP!!! Give me that good fizz!
   orderText: {fileID: 3792237582023453510}
   chatBubbleRenderer: {fileID: 5841806062622520239}
   fadeSpeed: 1
