@@ -87,6 +87,7 @@ public class DrinkStand : MonoBehaviour
         //Play sytem
         if(drinkAddedSystem != null)
         {
+            drinkAddedSystem.transform.position = drink.transform.position;
             drinkAddedSystem.Play();
         }
     }

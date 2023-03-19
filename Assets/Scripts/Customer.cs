@@ -56,8 +56,8 @@ public class Customer : MonoBehaviour
     private float bobPos = 0;
     private float baseY = 0;
     private float fade = 0;
-    private bool fading = false;
-    private int fadingDir = 1;
+    private bool fadingIn = false;
+    private bool fadingOut = false;
 
     //Properties
     public bool GetIfCorrrectPosition => correctPosition;
@@ -104,31 +104,32 @@ public class Customer : MonoBehaviour
         }
 
         //Fading chat bubble
-        if(fading)
+        if(fadingIn)
         {
-            if(fade >= 1)
+            if (fade >= 1)
             {
                 fade = 1;
-                fadingDir *= -1;
-                fading = false;
+                fadingIn = false;
             }
-            else if(fade <= 0)
+            else
+            {
+                fade += Time.deltaTime * fadeSpeed;
+                chatBubbleRenderer.color = new Color(chatBubbleRenderer.color.r, chatBubbleRenderer.color.g, chatBubbleRenderer.color.b, fade);
+                orderText.alpha = fade;
+            }
+        }
+
+        if (fadingOut)
+        {
+            if (fade <= 0)
             {
                 fade = 0;
-                fadingDir *= -1;
-                fading = false;
+                fadingOut = false;
                 orderText.text = string.Empty;
             }
             else
             {
-                if (fadingDir == 1)
-                {
-                    fade += Time.deltaTime * fadeSpeed;
-                }
-                else if(fadingDir == -1)
-                {
-                    fade -= Time.deltaTime * fadeSpeed;
-                }
+                fade -= Time.deltaTime * fadeSpeed;
                 chatBubbleRenderer.color = new Color(chatBubbleRenderer.color.r, chatBubbleRenderer.color.g, chatBubbleRenderer.color.b, fade);
                 orderText.alpha = fade;
             }
@@ -147,14 +148,14 @@ public class Customer : MonoBehaviour
                 {
                     desiredDrink = data.DesiredDrink.DrinkID;
                     orderText.text = data.OrderText;
-                    fading = true;
+                    fadingIn = true;
                     break;
                 }
                 else if(data == orderingData[orderingData.Count-1]) //If its the last data we want that drink to be ordered
                 {
                     desiredDrink = data.DesiredDrink.DrinkID;
                     orderText.text = data.OrderText;
-                    fading = true;
+                    fadingIn = true;
                 }
             }
         }
@@ -166,7 +167,7 @@ public class Customer : MonoBehaviour
         {
             CustomerServed?.Invoke();
             ordering = false;
-            fading = true;
+            fadingOut = true;
             desiredDrink = string.Empty;
             return true;
         }
