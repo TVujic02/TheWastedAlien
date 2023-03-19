@@ -7,7 +7,7 @@ using UnityEngine;
 public class DrinkMixer : MonoBehaviour, IUtensil
 {
     //Constants
-    private const float PREVIOUS_TIMER_MAX = 0.05f;
+    private const float PREVIOUS_TIMER_MAX = 0.025f;
     private const int MIN_INGRIDIENT_AMOUNT = 2;
 
     //Inspector variables
@@ -18,7 +18,11 @@ public class DrinkMixer : MonoBehaviour, IUtensil
 
     [SerializeField]
     [Tooltip("The amount of movements required to shake the mixer")]
-    private float shakeThreshold = 0.1f;
+    private float shakeStartThreshold = 0.1f;
+
+    [SerializeField]
+    [Tooltip("The amount of movements required to shake the mixer")]
+    private float shakeEndThreshold = 0.1f;
 
     [SerializeField]
     [Tooltip("The amount of time needed to complete the shake.")]
@@ -75,7 +79,7 @@ public class DrinkMixer : MonoBehaviour, IUtensil
             previousPos = storedPos; //Delayed previous pos
             storedPos = transform.position;
             //Shaking
-            if (Vector2.Distance((Vector2)transform.position, previousPos) > shakeThreshold) //If the distance moved is bigger we are shaking the mixer
+            if (Vector2.Distance((Vector2)transform.position, previousPos) > shakeStartThreshold && !shaking) //If the distance moved is bigger we start shaking the mixer
             {
                 shaking = true;
                 //Shaking audio
@@ -85,7 +89,7 @@ public class DrinkMixer : MonoBehaviour, IUtensil
                     playedExitSound = false;
                 }
             }
-            else
+            else if(Vector2.Distance((Vector2)transform.position, previousPos) < shakeEndThreshold) //If its below the end threshold we stop shaking
             {
                 shaking = false; //The mixer isnt being shaked enough
                 if (shakerSource.isPlaying && !playedExitSound)
