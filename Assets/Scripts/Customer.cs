@@ -147,14 +147,14 @@ public class Customer : MonoBehaviour
                 if (r <= data.OrderRate) //If the check is succeded
                 {
                     desiredDrink = data.DesiredDrink.DrinkID;
-                    orderText.text = data.OrderText;
+                    orderText.text = data.OrderText[UnityEngine.Random.Range(0, data.OrderText.Length - 1)];
                     fadingIn = true;
                     break;
                 }
                 else if(data == orderingData[orderingData.Count-1]) //If its the last data we want that drink to be ordered
                 {
                     desiredDrink = data.DesiredDrink.DrinkID;
-                    orderText.text = data.OrderText;
+                    orderText.text = data.OrderText[UnityEngine.Random.Range(0,data.OrderText.Length-1)];
                     fadingIn = true;
                 }
             }
@@ -192,5 +192,5 @@ public class CustomerOrderingData
     public float OrderRate = 0.5f;
 
     [Tooltip("The string that is shown when the customer.")]
-    public string OrderText = string.Empty;
+    public string[] OrderText;
 }
