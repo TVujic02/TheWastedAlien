@@ -4,10 +4,23 @@ using UnityEngine;
 
 public class RecipePanel : MonoBehaviour
 {
+    [SerializeField]
+    [Tooltip("Reference to the base panel layout.")]
+    private GameObject baseLayout;
+
+    [SerializeField]
+    [Tooltip("A list of the recipe layouts.")]
+    private GameObject[] recipeLayouts;
+
+    [SerializeField]
+    [Tooltip("The back button for the recipe layouts.")]
+    private GameObject backButton;
+
     // Start is called before the first frame update
     void Start()
     {
         gameObject.SetActive(false);
+        HideRecipe();
     }
 
     // Update is called once per frame
@@ -22,5 +35,22 @@ public class RecipePanel : MonoBehaviour
     public void ActivatePanel()
     {
         gameObject.SetActive(true);
+    }
+
+    public void ShowRecipe(int index)
+    {
+        baseLayout.SetActive(false);
+        recipeLayouts[index].SetActive(true);
+        backButton.SetActive(true);
+    }
+
+    public void HideRecipe() 
+    {
+        baseLayout.SetActive(true);
+        backButton.SetActive(false);
+        foreach(GameObject obj in recipeLayouts) 
+        {
+            obj.SetActive(false);
+        }
     }
 }
