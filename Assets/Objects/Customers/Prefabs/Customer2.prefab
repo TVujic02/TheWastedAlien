@@ -404,8 +404,11 @@ MonoBehaviour:
   idleBobSpeed: 3
   orderingData:
   - DesiredDrink: {fileID: 8501565638140027106, guid: 466a5a4a7bf0be74bbe1053fa42d04f1, type: 3}
-    OrderRate: 1
+    OrderRate: 0.5
     OrderText: Hey Man! A Cosmic Fizz pls!
+  - DesiredDrink: {fileID: 8501565638140027106, guid: 870c3f4961d4c7c4b921b057189e3e82, type: 3}
+    OrderRate: 0.5
+    OrderText: Laika's Special!!!!
   orderText: {fileID: 3792237582023453510}
   chatBubbleRenderer: {fileID: 5841806062622520239}
   fadeSpeed: 1
