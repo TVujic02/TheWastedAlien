@@ -23,6 +23,10 @@ public class DrinkStand : MonoBehaviour
     [Tooltip("Reference to the drinkdelivered port.")]
     private DrinkDestroyedPort drinkDeliveredPort;
 
+    [SerializeField]
+    [Tooltip("Reference to the system that is played when a drink is added (no looping).")]
+    private ParticleSystem drinkAddedSystem;
+
     //Private variables
     private List<GameObject> drinkRow = new List<GameObject>();
     private bool organiseLerp = false;
@@ -79,6 +83,12 @@ public class DrinkStand : MonoBehaviour
         drinkRow.Add(drink);
         drink.transform.position = drinkStandStart.position + (Vector3.right * (drinkRow.Count - 1) * drinkDistance); //Position it last in the row
         drinkStartPositions.Add(drink.transform.position);
+
+        //Play sytem
+        if(drinkAddedSystem != null)
+        {
+            drinkAddedSystem.Play();
+        }
     }
 
     private void RemoveDrink(GameObject drink)

@@ -5,6 +5,7 @@ using TMPro;
 
 public class DrinkShow : MonoBehaviour
 {
+    [Header("Fading")]
     [SerializeField]
     [Tooltip("Reference to all the Sprite renderers that should fade")]
     private SpriteRenderer[] fadingRenderers;
@@ -24,13 +25,19 @@ public class DrinkShow : MonoBehaviour
     [Tooltip("The speed that the renderers are faded in and out.")]
     private float fadeSpeed = 3f;
 
+    [Header("Other")]
     [SerializeField]
     [Tooltip("Reference to the drink show port.")]
     private DrinkShowPort drinkShowPort;
 
+    [SerializeField]
+    [Tooltip("Reference to the audio clipped that is placed when the drink is shown.")]
+    private AudioClip drinkShowClip;
+
     private bool fadingIn = false, fadingOut;
     private float fade = 0;
     private Dictionary<SpriteRenderer, float> maxOpacity = new Dictionary<SpriteRenderer, float>();
+    private AudioSource drinkShowSource;
     
     // Start is called before the first frame update
     void Start()
@@ -46,6 +53,7 @@ public class DrinkShow : MonoBehaviour
 
         gameObject.SetActive(false);
         drinkShowPort.DrinkShowStart.AddListener(StartDrinkShow);
+        drinkShowSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -64,6 +72,11 @@ public class DrinkShow : MonoBehaviour
             {
                 fadingIn = false;
                 fade = 1;
+                //Play show sound
+                if(drinkShowSource != null && drinkShowClip!= null) 
+                {
+                    drinkShowSource.PlayOneShot(drinkShowClip);
+                }
             }
             else
             {
