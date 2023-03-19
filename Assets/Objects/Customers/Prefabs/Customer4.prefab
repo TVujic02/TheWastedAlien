@@ -405,10 +405,10 @@ MonoBehaviour:
   orderingData:
   - DesiredDrink: {fileID: 8501565638140027106, guid: 88442aaf7cea00847ae5a77c7cbefc22, type: 3}
     OrderRate: 0.2
-    OrderText: Hi there! A Lunar Longtower please.
+    OrderText: Hey! Gimme a Lunar Longtower
   - DesiredDrink: {fileID: 8501565638140027106, guid: 870c3f4961d4c7c4b921b057189e3e82, type: 3}
     OrderRate: 0.8
-    OrderText: Laika's Special!!!!
+    OrderText: Laika's
   orderText: {fileID: 3792237582023453510}
   chatBubbleRenderer: {fileID: 5841806062622520239}
   fadeSpeed: 1
