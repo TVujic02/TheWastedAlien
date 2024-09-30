@@ -17,4 +17,4 @@ MonoBehaviour:
   - {fileID: 2176299698094989353, guid: fc14f8154d7fac049a89682b4a213517, type: 3}
   - {fileID: 2176299698094989353, guid: 71392b1b17dff3842b5150502debf25c, type: 3}
   - {fileID: 2176299698094989353, guid: 5447293ec18560a46a9c44c0125dbee8, type: 3}
-  resultDrink: {fileID: 8501565638140027105, guid: 88442aaf7cea00847ae5a77c7cbefc22, type: 3}
+  resultDrink: {fileID: 8501565638140027105, guid: d0ab6e7d1f8e16f48baf7b22c43254c4, type: 3}
