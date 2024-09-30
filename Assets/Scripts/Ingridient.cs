@@ -57,7 +57,6 @@ public class Ingridient : MonoBehaviour, IMouseInteractable
         //Get the difference
         mousePosDifference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         previousPos = transform.position;
-        Debug.Log(previousPos);
     }
     public void MouseDrag()
     {
@@ -68,7 +67,6 @@ public class Ingridient : MonoBehaviour, IMouseInteractable
 
     public void MouseUp()
     {
-        Debug.Log(previousPos);
         //When we stop dragging this object
         rb.AddForce(((Vector2)transform.position - previousPos).normalized * releaseForce); //Force that simulates throwing
 

@@ -19,21 +19,17 @@ public class PlayerInteraction : MonoBehaviour
                 Ray cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
                 RaycastHit2D[] hits = Physics2D.GetRayIntersectionAll(cameraRay);
 
-                //Get the first
+                //Get the first interactable that was clicked on
                 IMouseInteractable interactable = hits.AsEnumerable().Select(i => i.collider.gameObject.GetComponentInParent<IMouseInteractable>())
                     .Where(i => i != null).FirstOrDefault();
 
-
+                //Null check
                 if(interactable != null)
                 {
-                    //Interact functions
-                    if (interactable != currentInteractable)
-                    {
-                        //We clicked on a new interactable
-                        interactable.MouseDown();
-                        currentInteractable = interactable;
-                    }
+                    interactable.MouseDown();
+                    currentInteractable = interactable;
 
+                    //Start dragging
                     dragging = true;
                 }
             }
