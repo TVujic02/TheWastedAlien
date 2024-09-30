@@ -118,7 +118,7 @@ public class CustomerHandler : MonoBehaviour
             float r = UnityEngine.Random.Range(0.0f, 1.0f); //Get a random float used to detirmine if this customer should be spawned
             if (r <= data.BaseRate || data == customerSpawnRateDatas[customerSpawnRateDatas.Count - 1]) //If we succeded the check or if its the last data
             {
-                GameObject obj = Instantiate(data.customerPrefab, customerSpawnPoint.position, Quaternion.identity); //Spawn at spawnPoint
+                GameObject obj = Instantiate(data.customerPrefab, customerSpawnPoint.position, Quaternion.identity, transform); //Spawn at spawnPoint
                 Customer newCustomer = obj.GetComponent<Customer>();
                 if (customers.Count == 0) firstRepositioning = true; //Is this new customer the first one in queue
                 customers.Enqueue(newCustomer); //Add it to the queue

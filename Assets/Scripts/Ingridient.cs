@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class Ingridient : MonoBehaviour
+public class Ingridient : MonoBehaviour, IMouseInteractable
 {
     //Inspector variables
     [Header("IngridientData")]
@@ -52,21 +52,23 @@ public class Ingridient : MonoBehaviour
         storedPos = transform.position;
     }
 
-    private void OnMouseDown()
+    public void MouseDown()
     {
         //Get the difference
         mousePosDifference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         previousPos = transform.position;
+        Debug.Log(previousPos);
     }
-    private void OnMouseDrag()
+    public void MouseDrag()
     {
         //Set the difference
         transform.position = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition) - mousePosDifference;
         rb.velocity = Vector2.zero; //Make sure gravity isnt building up velocity
     }
 
-    private void OnMouseUpAsButton()
+    public void MouseUp()
     {
+        Debug.Log(previousPos);
         //When we stop dragging this object
         rb.AddForce(((Vector2)transform.position - previousPos).normalized * releaseForce); //Force that simulates throwing
 

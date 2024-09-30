@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DrinkMixer : MonoBehaviour, IUtensil
+public class DrinkMixer : MonoBehaviour, IUtensil, IMouseInteractable
 {
     //Constants
     private const float PREVIOUS_TIMER_MAX = 0.025f;
@@ -125,16 +125,18 @@ public class DrinkMixer : MonoBehaviour, IUtensil
         }
     }
 
-    private void OnMouseDown()
+    public void MouseDown()
     {
         //Get the difference
         mousePosDifference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
     }
-    private void OnMouseDrag()
+    public void MouseDrag()
     {
         //Set the difference
         transform.position = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition) - mousePosDifference;
     }
+
+    public void MouseUp() { }
 
     public void IngridientInteraction(Ingridient ingridient)
     {

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Drink : MonoBehaviour
+public class Drink : MonoBehaviour, IMouseInteractable
 {
     //Inspector variables
     [SerializeField]
@@ -29,7 +29,6 @@ public class Drink : MonoBehaviour
     //Private variables
     private Vector2 mousePosDifference = Vector2.zero;
     private Vector3 startPos = Vector3.zero;
-    private bool isDragging = false;
 
     //Properties
     public string DrinkID { get => drinkID; set => drinkID = value; }
@@ -50,22 +49,19 @@ public class Drink : MonoBehaviour
         
     }
 
-    private void OnMouseDown()
+    public void MouseDown()
     {
-        if(!isDragging)
-        {
-            //Get the difference
-            mousePosDifference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-            startPos = transform.position;
-            isDragging = true;
-        }
+        //Get the difference
+        mousePosDifference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        startPos = transform.position;
     }
-    private void OnMouseDrag()
+    public void MouseDrag()
     {
         //Set the difference
         transform.position = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition) - mousePosDifference;
     }
-    private void OnMouseUpAsButton()
+
+    public void MouseUp()
     {
 
         //Interaction with customers
@@ -99,9 +95,9 @@ public class Drink : MonoBehaviour
             Destroy(gameObject); //Remove the drink
             return;
         }
+
         //Reset the position
         transform.position = startPos;
-        isDragging = false;
 
     }
 }
