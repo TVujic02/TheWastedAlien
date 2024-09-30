@@ -4495,7 +4495,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 640d976ff44ab0f45beb7a2b87f92302, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseCheckRadius: 0.001
 --- !u!1 &874161836
 GameObject:
   m_ObjectHideFlags: 0
@@ -16810,7 +16809,7 @@ MonoBehaviour:
   customerOrderingPoint: {fileID: 2110828270}
   customerExitPoint: {fileID: 1634620059}
   distanceBetweenCustomers: 4
-  maxCustomers: 3
+  maxCustomers: 5
   spawnTimeRange: {x: 5, y: 10}
   customerSpawnRateDatas:
   - customerPrefab: {fileID: 7107552791347746416, guid: d59129c73813eb046b4de0c65f344a2e, type: 3}
@@ -16820,6 +16819,8 @@ MonoBehaviour:
   - customerPrefab: {fileID: 8460232591279121542, guid: e0adc4f99b8bd614cba9dfe3ca8699ec, type: 3}
     BaseRate: 0.3
   - customerPrefab: {fileID: 8460232591279121542, guid: da11e29f46573db4fb825edf38af300b, type: 3}
+    BaseRate: 0.2
+  - customerPrefab: {fileID: 8460232591279121542, guid: 02102689eb5093e48a3791196f848512, type: 3}
     BaseRate: 0.2
 --- !u!1 &1972931203
 GameObject:
