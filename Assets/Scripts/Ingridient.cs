@@ -111,23 +111,29 @@ public class ProcessingData_Editor : Editor
             var fryResultProprety = serializedObject.FindProperty("FryResult");
             
 
+            //Crushable
             EditorGUILayout.PropertyField(crushableProperty);
-            EditorGUILayout.PropertyField(cutableProperty);
-            EditorGUILayout.PropertyField(fryableProperty);
-
-            //Results
             if (ingridient.Crushable)
             {
                 EditorGUILayout.PropertyField(crushResultProprety);
+                EditorGUILayout.Space(5);
             }
+
+            //Cutable
+            EditorGUILayout.PropertyField(cutableProperty);
             if (ingridient.Cutable)
             {
                 EditorGUILayout.PropertyField(cutResultProperty);
+                EditorGUILayout.Space(5);
             }
+
+            //Fryable
+            EditorGUILayout.PropertyField(fryableProperty);
             if (ingridient.Fryable)
             {
                 EditorGUILayout.PropertyField(fryResultProprety);
             }
+
         }
         serializedObject.ApplyModifiedProperties();
 
