@@ -16123,7 +16123,7 @@ MonoBehaviour:
   maxIngridientAmount: 6
   shakeStartThreshold: 0.9
   shakeEndThreshold: 0.1
-  shakeTime: 2
+  shakeTime: 0.9
   recipes:
   - {fileID: 11400000, guid: 44211b5f314a9e24f991c0f2e9f843b9, type: 2}
   - {fileID: 11400000, guid: 8ef35445fdc368147adf040db0467841, type: 2}
