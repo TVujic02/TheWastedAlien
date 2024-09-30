@@ -1,7 +1,5 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
@@ -87,6 +85,7 @@ public class Ingridient : MonoBehaviour
     }
 }
 
+#if UNITY_EDITOR
 [CustomEditor(typeof(Ingridient))]
 public class ProcessingData_Editor : Editor
 {
@@ -139,3 +138,4 @@ public class ProcessingData_Editor : Editor
 
     }
 }
+#endif
