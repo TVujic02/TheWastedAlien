@@ -16,6 +16,10 @@ public class RecipePanel : MonoBehaviour
     [Tooltip("The back button for the recipe layouts.")]
     private GameObject backButton;
 
+    [SerializeField]
+    [Tooltip("The button that closes the recipe panel.")]
+    private GameObject closeButton;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,10 +50,12 @@ public class RecipePanel : MonoBehaviour
         baseLayout.SetActive(false);
         recipeLayouts[index].SetActive(true);
         backButton.SetActive(true);
+        closeButton.SetActive(false);
     }
 
     public void HideRecipe() 
     {
+        closeButton.SetActive(true);
         baseLayout.SetActive(true);
         backButton.SetActive(false);
         foreach(GameObject obj in recipeLayouts) 
