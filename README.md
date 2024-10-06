@@ -22,4 +22,4 @@ How to play:
    Now you know how to play the game! Some of the ingredients can be turned into other ingredients with the help of the utensils standing on the bar.
    To turn a ingredient into another, drag the ingredient onto one of the utensils. Try to experiment and find which ingredients turn into diffirent ones!
 
-   Please do not distrubute.
+   Please do not distribute.
